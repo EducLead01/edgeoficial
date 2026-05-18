@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PipeLovers - Universidade Corporativa de Vendas B2B</title>
+  <link rel="icon" href="https://www.pipelovers.net/wp-content/uploads/2025/07/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #020614; --bg2: #060918; --green: #00773E; --blue: #466EED;
+      --white: #ffffff; --gray: #8b8fa8; --border: #1a1d35;
+      --font: 'Host Grotesk', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 40px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(2,6,20,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); transition: background .3s;
+    }
+    .nav-logo img { height: 32px; }
+    .nav-links { display: flex; gap: 28px; list-style: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-menu {
+      display: none; position: absolute; top: 100%; left: 0;
+      background: #0e1128; border: 1px solid var(--border); border-radius: 10px;
+      min-width: 180px; padding: 8px 0; z-index: 200;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; padding: 8px 16px; font-size: 13px; color: var(--gray); transition: color .2s, background .2s; }
+    .nav-dropdown-menu a:hover { color: var(--white); background: rgba(255,255,255,.05); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 22px; border-radius: 999px; font-family: var(--font);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: opacity .2s, transform .2s; border: none; white-space: nowrap;
+    }
+    .btn:hover { opacity: .85; transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--white); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-green { background: var(--green); color: var(--white); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; }
+
+    /* LAYOUT */
+    section { padding: 80px 40px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+    h1, h2, h3 { line-height: 1.2; font-weight: 700; }
+    h1 { font-size: clamp(32px,5vw,56px); }
+    h2 { font-size: clamp(28px,4vw,44px); }
+    h3 { font-size: clamp(18px,2.5vw,26px); }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header p { color: var(--gray); font-size: 17px; max-width: 600px; margin: 16px auto 0; }
+
+    /* HERO */
+    #hero {
+      padding-top: 140px; min-height: 100vh; display: flex; align-items: center;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(70,110,237,.12) 0%, transparent 70%), var(--bg);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(70,110,237,.12); border: 1px solid rgba(70,110,237,.3);
+      border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--blue);
+      font-weight: 600; margin-bottom: 24px;
+    }
+    .hero-title { margin-bottom: 20px; }
+    .hero-subtitle { color: var(--gray); font-size: 17px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-bullets { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 10px; }
+    .hero-bullets li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,.85); }
+    .hero-bullets li::before {
+      content: '✓'; display: flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; background: rgba(0,119,62,.2); border-radius: 50%;
+      color: var(--green); font-size: 11px; flex-shrink: 0;
+    }
+    .hero-img img { width: 100%; border-radius: 20px; display: block; }
+
+    /* STATS TICKER */
+    #stats-ticker {
+      padding: 0; background: #060918;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .ticker-track { display: flex; animation: ticker 30s linear infinite; width: max-content; }
+    .ticker-item {
+      display: flex; align-items: center; gap: 12px; padding: 22px 48px;
+      white-space: nowrap; border-right: 1px solid var(--border); font-size: 15px; font-weight: 500;
+    }
+    .ticker-item strong { color: var(--blue); font-size: 22px; font-weight: 800; }
+    .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* FEATURES */
+    .feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+    .feature-block.reverse { direction: rtl; }
+    .feature-block.reverse > * { direction: ltr; }
+    .feature-label { color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .feature-title { margin-bottom: 20px; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.75); font-size: 15px; line-height: 1.6; }
+    .feature-list li::before { content: '—'; color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+    .feature-img img { width: 100%; border-radius: 16px; display: block; }
+
+    /* CLIENTS MARQUEE */
+    #clients { background: #060918; padding: 60px 0; }
+    #clients .section-header { padding: 0 40px; margin-bottom: 48px; }
+    .marquee-wrap { overflow: hidden; mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+    .marquee-track { display: flex; animation: marquee 35s linear infinite; width: max-content; gap: 48px; padding: 8px 0; }
+    .marquee-track img { height: 36px; object-fit: contain; filter: grayscale(1) brightness(.7); transition: filter .3s; flex-shrink: 0; }
+    .marquee-track img:hover { filter: grayscale(0) brightness(1); }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* EXPERTS */
+    .experts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 20px; margin-top: 48px; }
+    .expert-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; filter: grayscale(.2); transition: transform .3s, filter .3s; }
+    .expert-card:hover img { transform: scale(1.05); filter: grayscale(0); }
+
+    /* INDIVIDUAL PLANS */
+    #planos-individuais { background: var(--bg2); }
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 24px; margin-top: 48px; }
+    .plan-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .3s, transform .3s; }
+    .plan-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .plan-card.featured { border-color: var(--blue); }
+    .plan-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .plan-card-body { padding: 20px; }
+    .plan-card h3 { font-size: 17px; margin-bottom: 10px; }
+    .plan-card p { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 20px; }
+    .plan-card .btn { width: 100%; }
+
+    /* METHODOLOGY */
+    #metodologia { background: var(--bg); text-align: center; position: relative; overflow: hidden; }
+    #metodologia::before { content: ''; position: absolute; inset: 0; background: url('https://www.pipelovers.net/wp-content/uploads/2025/07/onda1.webp') center/cover no-repeat; opacity: .06; pointer-events: none; }
+    .methodology-wrap { position: relative; display: flex; align-items: center; justify-content: center; gap: 80px; flex-wrap: wrap; margin-top: 48px; }
+    .method-wheel { width: 280px; height: 280px; flex-shrink: 0; }
+    .method-wheel img { width: 100%; height: 100%; object-fit: contain; }
+    .method-quadrants { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 540px; }
+    .method-quadrant { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: left; }
+    .method-quadrant h3 { font-size: 15px; color: var(--blue); margin-bottom: 10px; }
+    .method-quadrant ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .method-quadrant li { font-size: 13px; color: var(--gray); display: flex; align-items: center; gap: 6px; }
+    .method-quadrant li::before { content: '·'; color: var(--blue); font-size: 20px; line-height: 1; }
+
+    /* TECH PARTNERS */
+    #parceiros { background: var(--bg2); }
+    .partners-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; margin-top: 48px; align-items: center; }
+    .partner-logo { background: #0d1023; border: 1px solid var(--border); border-radius: 12px; padding: 20px; display: flex; align-items: center; justify-content: center; transition: border-color .3s; }
+    .partner-logo:hover { border-color: var(--blue); }
+    .partner-logo img { height: 34px; object-fit: contain; filter: grayscale(.5) brightness(.8); transition: filter .3s; }
+    .partner-logo:hover img { filter: none; }
+
+    /* TESTIMONIALS */
+    .testimonials-slider { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .testimonial-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color .3s; }
+    .testimonial-card:hover { border-color: rgba(70,110,237,.4); }
+    .stars { color: #f59e0b; font-size: 16px; margin-bottom: 16px; }
+    .testimonial-quote { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author { display: flex; align-items: center; gap: 12px; }
+    .testimonial-author img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+    .testimonial-author strong { font-size: 14px; display: block; }
+    .testimonial-author span { font-size: 12px; color: var(--gray); }
+
+    /* FOUNDER */
+    #founder { background: linear-gradient(135deg, #060918 0%, #0a0f2e 100%); }
+    .founder-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 80px; align-items: center; }
+    .founder-img img { width: 100%; border-radius: 20px; display: block; }
+    .founder-tag { color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .founder-list { list-style: none; margin-top: 24px; display: flex; flex-direction: column; gap: 10px; }
+    .founder-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: rgba(255,255,255,.8); }
+    .founder-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; }
+
+    /* CTA */
+    #cta-section { background: linear-gradient(135deg, rgba(70,110,237,.2) 0%, rgba(0,119,62,.1) 100%), var(--bg); text-align: center; padding: 100px 40px; }
+    #cta-section p { color: var(--gray); font-size: 17px; margin: 16px auto 40px; max-width: 500px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ENTERPRISE PRICING */
+    #planos { background: var(--bg2); }
+    .pricing-features-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px,1fr)); gap: 12px; margin: 20px 0 48px; }
+    .pricing-features-list li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(255,255,255,.8); }
+    .pricing-features-list li::before { content: '✓'; color: var(--green); font-size: 13px; flex-shrink: 0; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px,1fr)); gap: 16px; }
+    .pricing-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; padding: 24px 20px; text-align: center; transition: border-color .3s, transform .3s; }
+    .pricing-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .pricing-card.popular { border-color: var(--blue); position: relative; }
+    .pricing-card.popular::before { content: 'POPULAR'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--blue); color: white; font-size: 10px; font-weight: 700; letter-spacing: .1em; padding: 3px 10px; border-radius: 999px; }
+    .pricing-plan-name { font-size: 11px; font-weight: 600; color: var(--gray); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
+    .pricing-licenses { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+    .pricing-price { font-size: 26px; font-weight: 800; margin-bottom: 2px; }
+    .pricing-price span { font-size: 13px; font-weight: 400; color: var(--gray); }
+    .pricing-period { font-size: 12px; color: var(--gray); margin-bottom: 4px; }
+    .pricing-discount { font-size: 12px; color: var(--green); font-weight: 600; margin-bottom: 4px; }
+    .pricing-tag { font-size: 11px; color: var(--gray); margin-bottom: 16px; }
+    .pricing-card .btn { width: 100%; font-size: 12px; padding: 9px 12px; margin-bottom: 8px; }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: #0d1023; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: border-color .3s; }
+    .faq-item.open { border-color: rgba(70,110,237,.4); }
+    .faq-question { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 500; gap: 16px; user-select: none; }
+    .faq-icon { font-size: 22px; color: var(--blue); flex-shrink: 0; transition: transform .3s; line-height: 1; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; padding: 0 24px; color: var(--gray); font-size: 14px; line-height: 1.7; }
+    .faq-item.open .faq-answer { max-height: 400px; padding-bottom: 20px; }
+    .faq-answer ul { margin: 8px 0 0 16px; display: flex; flex-direction: column; gap: 4px; }
+
+    /* FOOTER */
+    footer { background: #040817; border-top: 1px solid var(--border); padding: 60px 40px 40px; }
+    .footer-top { display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-logo img { height: 36px; margin-bottom: 16px; display: block; }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .footer-social a { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--gray); transition: color .2s, border-color .2s; }
+    .footer-social a:hover { color: var(--white); border-color: var(--blue); }
+    .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; color: rgba(255,255,255,.5); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: var(--gray); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--gray); flex-wrap: wrap; gap: 8px; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .hero-grid, .feature-block, .feature-block.reverse, .founder-grid { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
+      .feature-block.reverse .feature-img { order: -1; }
+      .pricing-grid { grid-template-columns: repeat(2,1fr); }
+      .testimonials-slider { grid-template-columns: 1fr; }
+      .partners-grid { grid-template-columns: repeat(3,1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      #cta-section { padding: 60px 20px; }
+      .methodology-wrap { gap: 40px; }
+      .method-wheel { width: 200px; height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .pricing-grid { grid-template-columns: 1fr; }
+      .method-quadrants { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/logo-pipelovers.svg" alt="PipeLovers">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Início</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Conteúdos Gratuitos ▾</a>
+      <div class="nav-dropdown-menu">
+        <a href="https://mkt.pipelovers.net/elevator-pitch-v3">Newsletter</a>
+        <a href="https://www.pipelovers.net/blog/">Blog</a>
+        <a href="#">Demo interativa</a>
+        <a href="#">Livro</a>
+      </div>
+    </li>
+    <li><a href="#">Vagas em Vendas B2B</a></li>
+    <li><a href="#">Contrate uma Palestra</a></li>
+    <li><a href="#">Academia B2B PipeLovers</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="#" class="btn btn-outline">Login</a>
+    <a href="#planos" class="btn btn-blue">Assine agora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-in">
+        <div class="hero-tag">🎓 Academia B2B</div>
+        <h1 class="hero-title">Conheça a maior <span style="color:var(--blue)">Universidade Corporativa</span> de Vendas B2B do Brasil.</h1>
+        <p class="hero-subtitle">Treine seu time comercial com conhecimento prático para cada função na área comercial!</p>
+        <ul class="hero-bullets">
+          <li>5 Aulas ao vivo por semana</li>
+          <li>Plataforma com aulas gravadas</li>
+          <li>Planos de Desenvolvimento Individual (PDI)</li>
+          <li>+4000 alunos para benchmarking</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue btn-lg">QUERO CONHECER O TREINAMENTO</a>
+      </div>
+      <div class="hero-img fade-in" style="transition-delay:.2s">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/08/alunos.webp" alt="Alunos PipeLovers">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS TICKER -->
+<div id="stats-ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><strong>4.000</strong> Usuários <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>450</strong> Empresas <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>700</strong> Horas de aula <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>600</strong> Experts de mercado <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>5</strong> Aulas ao vivo/semana <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>4.000</strong> Usuários <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>450</strong> Empresas <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>700</strong> Horas de aula <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>600</strong> Experts de mercado <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>5</strong> Aulas ao vivo/semana <span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">Conteúdo prático</span>
+      <h2>Resolvemos seu desafio de treinar seu time comercial toda semana</h2>
+    </div>
+
+    <div class="feature-block fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Conteúdo prático</div>
+        <h2 class="feature-title">Aulas ao vivo com especialistas</h2>
+        <ul class="feature-list">
+          <li>5 novas aulas ao vivo todas as semanas.</li>
+          <li>Módulos especializados por função: Pré-vendas, vendedores, gerentes e parcerias.</li>
+          <li>Plataforma web e mobile com acesso ilimitado.</li>
+          <li><strong>Class:</strong> toda sexta uma aula com os consultores mais renomados do mercado.</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue">Agende uma demonstração</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/08/para-empresas-copy.webp" alt="Aulas ao vivo">
+      </div>
+    </div>
+
+    <div class="feature-block reverse fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Diagnóstico personalizado</div>
+        <h2 class="feature-title">Planos de Desenvolvimento Individual (PDI) para todos os seus vendedores</h2>
+        <ul class="feature-list">
+          <li>Diagnóstico com as lideranças sobre necessidades de desenvolvimento para cada membro.</li>
+          <li>Elaboração de PDI e onboarding individualizado para iniciar a jornada de treinamentos.</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue">Agende uma demonstração</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/08/dpi.webp" alt="PDI">
+      </div>
+    </div>
+
+    <div class="feature-block fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Programa de Desenvolvimento Comercial</div>
+        <h2 class="feature-title">Um especialista da PipeLovers sempre ao seu lado!</h2>
+        <ul class="feature-list">
+          <li>Definição de metas de aprendizado e onboarding individualizado</li>
+          <li>Acompanhamento mensal com as lideranças</li>
+          <li>Suas demandas de novos conteúdos entram na nossa grade de aulas</li>
+          <li>Relatórios de Uso e Engajamento dos times</li>
+          <li>Certificados de conclusão por aula e trilha</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue">Agende uma demonstração</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/bullets-1-1.webp" alt="Programa">
+      </div>
+    </div>
+
+    <div class="feature-block reverse fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Divulgação de vagas comerciais</div>
+        <h2 class="feature-title">Onboarding personalizado para cada colaborador</h2>
+        <ul class="feature-list">
+          <li>Nosso time de CX garante o ramp up de cada usuário dentro da plataforma.</li>
+          <li>Suporte para seguir o plano de desenvolvimento individual definido pela liderança.</li>
+          <li>Audiência de 70K assinantes da newsletter para divulgar vagas.</li>
+          <li>Aumento de alcance nas redes sociais da PipeLovers.</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue">Agende uma demonstração</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/bullet-2.webp" alt="Onboarding">
+      </div>
+    </div>
+
+    <div class="feature-block fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Comunidade</div>
+        <h2 class="feature-title">Comunidade para benchmark e networking</h2>
+        <ul class="feature-list">
+          <li>Impulsione seu aprendizado trocando insights com +4.000 membros.</li>
+          <li>Realize benchmark em tempo real com pessoas de vendas de empresas do Brasil inteiro.</li>
+        </ul>
+        <a href="#planos" class="btn btn-blue">Agende uma demonstração</a>
+      </div>
+      <div class="feature-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/08/bullets.webp" alt="Comunidade">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="container">
+    <div class="section-header fade-in" style="padding:0">
+      <h2>Conheça alguns dos nossos clientes</h2>
+    </div>
+  </div>
+  <div style="margin-top:40px">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/totvs_1x.webp" alt="TOTVS">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/checklistfacil_1x.webp" alt="Checklist Fácil">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/barte.webp" alt="Barte">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/zoho_crm_1x.webp" alt="Zoho CRM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/br24_1x.webp" alt="BR24">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/caju_1x.webp" alt="Caju">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/chat_guru_1x.webp" alt="ChatGuru">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/rocketseat_1x.webp" alt="Rocketseat">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/chinalink_1x.webp" alt="Chinalink">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/connectthink_1x.webp" alt="Connectthink">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/cvcrm_1x.webp" alt="CV CRM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/estuda_com_1x.webp" alt="Estuda.com">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/eva_1x.webp" alt="Eva">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ferias_e_co_1x.webp" alt="Férias&CO">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/getdemo_1x.webp" alt="GetDemo">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gupy_1x.webp" alt="Gupy">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/kamino_1x.webp" alt="Kamino">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/kmm_1x.webp" alt="KMM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/piperun_1x.webp" alt="PipeRun">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/meetrox_1x.webp" alt="Meetrox">
+        <!-- duplicate -->
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/totvs_1x.webp" alt="TOTVS">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/checklistfacil_1x.webp" alt="Checklist Fácil">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/barte.webp" alt="Barte">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/zoho_crm_1x.webp" alt="Zoho CRM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/br24_1x.webp" alt="BR24">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/caju_1x.webp" alt="Caju">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/chat_guru_1x.webp" alt="ChatGuru">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/rocketseat_1x.webp" alt="Rocketseat">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/chinalink_1x.webp" alt="Chinalink">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/connectthink_1x.webp" alt="Connectthink">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/cvcrm_1x.webp" alt="CV CRM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/estuda_com_1x.webp" alt="Estuda.com">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/eva_1x.webp" alt="Eva">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ferias_e_co_1x.webp" alt="Férias&CO">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/getdemo_1x.webp" alt="GetDemo">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gupy_1x.webp" alt="Gupy">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/kamino_1x.webp" alt="Kamino">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/kmm_1x.webp" alt="KMM">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/piperun_1x.webp" alt="PipeRun">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/meetrox_1x.webp" alt="Meetrox">
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <div class="marquee-wrap">
+        <div class="marquee-track" style="animation-direction:reverse;animation-duration:40s">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/meetz_1x.webp" alt="Meetz">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/movix_empilhadeiras_1x.webp" alt="Movix">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/arco_1x.webp" alt="Arco">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/aevo_1x.webp" alt="Aevo">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/omie_1x.webp" alt="Omie">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/onhappy_1x.webp" alt="Onhappy">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/opentech_1x.webp" alt="Opentech">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/processo_de_vendas_1x.webp" alt="Processo de Vendas">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/progic_1x.webp" alt="Progic">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/sinch_1x.webp" alt="Sinch">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/tecnotri_1x.webp" alt="Tecnotri">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/totalpass_1x.webp" alt="Totalpass">
+          <!-- duplicate -->
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/meetz_1x.webp" alt="Meetz">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/movix_empilhadeiras_1x.webp" alt="Movix">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/arco_1x.webp" alt="Arco">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/aevo_1x.webp" alt="Aevo">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/omie_1x.webp" alt="Omie">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/onhappy_1x.webp" alt="Onhappy">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/opentech_1x.webp" alt="Opentech">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/processo_de_vendas_1x.webp" alt="Processo de Vendas">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/progic_1x.webp" alt="Progic">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/sinch_1x.webp" alt="Sinch">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/tecnotri_1x.webp" alt="Tecnotri">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/totalpass_1x.webp" alt="Totalpass">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTS -->
+<section id="experts">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">Os maiores do mercado</span>
+      <h2>Aprenda com quem tem experiência na prática</h2>
+      <p>Esqueça os Gurus! Aprenda com os melhores Experts do mercado e saiba tudo sobre o ecossistema B2B:</p>
+    </div>
+    <div class="experts-grid fade-in">
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/fabiano_correia_1x.webp" alt="Fabiano Correia"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/alexandre_apendino_1x.webp" alt="Alexandre Apendino"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ricardo_dellova_1x.webp" alt="Ricardo Dellova"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/jo_o_bizzarri_1x.webp" alt="João Bizzarri"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/angela_kanbour_1x.webp" alt="Angela Kanbour"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/weverton_soares_1x.webp" alt="Weverton Soares"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/alessandra_trigo_1x.webp" alt="Alessandra Trigo"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/amanda_alves_1x.webp" alt="Amanda Alves"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/aurora_suh_1x.webp" alt="Aurora Suh"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/caio_decicco_1x.webp" alt="Caio Decicco"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/daniela_pio_1x.webp" alt="Daniela Pio"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/fabiane_kobayashi_1x.webp" alt="Fabiane Kobayashi"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/felipe_spina_1x.webp" alt="Felipe Spina"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/fernanda_brunsizian_1x.webp" alt="Fernanda Brunsizian"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gabriel_amato_1x.webp" alt="Gabriel Amato"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gregory_street_1x.webp" alt="Gregory Street"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ligia_alface_1x.webp" alt="Lígia Alface"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/luciano_santos_1x.webp" alt="Luciano Santos"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ludmilla_fernandes_1x.webp" alt="Ludmilla Fernandes"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/marcelo_pereira_1x.webp" alt="Marcelo Pereira"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/midori_toyota_1x.webp" alt="Midori Toyota"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/nathalia_koga_1x.webp" alt="Nathalia Koga"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ot_vio_ponciano_1x.webp" alt="Otávio Ponciano"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/raphael_godoy_1x.webp" alt="Raphael Godoy"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/ricardo_okino_1x.webp" alt="Ricardo Okino"></div>
+      <div class="expert-card"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/samantha_lopes_1x.webp" alt="Samantha Lopes"></div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="#planos" class="btn btn-blue btn-lg">Agendar uma demonstração</a>
+    </div>
+  </div>
+</section>
+
+<!-- INDIVIDUAL PLANS -->
+<section id="planos-individuais">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Conteúdo especializado para cada função do seu time comercial</h2>
+    </div>
+    <div class="plans-grid fade-in">
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/executivos_de_vendas.webp" alt="Executivo de Vendas">
+        <div class="plan-card-body">
+          <h3>Executivo de vendas</h3>
+          <p>Ideal para profissionais dedicados à prospecção (Hunters), gestão de carteira (Farmers) e pré-vendedores que desejam avançar na carreira.</p>
+          <a href="https://app.hub.la/checkout/3PmVrl6mCh7cgTY77qke" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/pre_vendas.webp" alt="Pré-vendas">
+        <div class="plan-card-body">
+          <h3>Pré-vendas</h3>
+          <p>O espaço ideal para BDRs e SDRs aprimorarem habilidades em prospecção inbound e outbound, desde geração de leads até qualificação.</p>
+          <a href="https://app.hub.la/checkout/67BsvTZvU1nyNnQRkGgj" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gest_o_comercial.webp" alt="Gestão Comercial">
+        <div class="plan-card-body">
+          <h3>Gestão Comercial</h3>
+          <p>Para líderes de todos os níveis — coordenadores a diretores. Recomendado também para CEOs de pequenas e médias empresas.</p>
+          <a href="https://app.hub.la/checkout/hpxYvwMHyyNXBh2zY0tM" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/canais_e_parcerias.webp" alt="Canais e Parcerias">
+        <div class="plan-card-body">
+          <h3>Canais e Parcerias</h3>
+          <p>Gerenciado com a Plural Sales. Conteúdo abrangente sobre o ecossistema de canais e parcerias B2B.</p>
+          <a href="https://app.hub.la/checkout/toX4NR34IvtoTGiBBYwA" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card featured">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/full_pass.webp" alt="Full Pass">
+        <div class="plan-card-body">
+          <h3>Full Pass</h3>
+          <p>Acesso a <strong>todos</strong> os grupos: ✔ Pré-Vendedores ✔ Canais & Parcerias ✔ Executivo de Vendas ✔ Líderes de Vendas</p>
+          <a href="https://app.hub.la/checkout/2ZXNmOxe6oRqEkosOh5g" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- METHODOLOGY -->
+<section id="metodologia">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Metodologia exclusiva com <span style="color:var(--blue)">4 dimensões</span> de conhecimento</h2>
+      <p>A evolução do profissional de vendas B2B depende de conhecimentos muito além da dimensão técnica</p>
+    </div>
+    <div class="methodology-wrap fade-in">
+      <div class="method-wheel">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/simbolo-pipelovers-redondo.svg" alt="Metodologia PipeLovers">
+      </div>
+      <div class="method-quadrants">
+        <div class="method-quadrant">
+          <h3>Visão de Negócio</h3>
+          <ul>
+            <li>Tendências de mercado</li>
+            <li>Conhecimento do negócio e produto</li>
+          </ul>
+        </div>
+        <div class="method-quadrant">
+          <h3>Conhecimento Técnico</h3>
+          <ul>
+            <li>Técnica de vendas</li>
+            <li>Gestão de vendas</li>
+            <li>Pensamento crítico</li>
+          </ul>
+        </div>
+        <div class="method-quadrant">
+          <h3>Auto Desenvolvimento</h3>
+          <ul>
+            <li>Aprendizado ativo</li>
+            <li>Gestão de tempo e da informação</li>
+            <li>Inteligência emocional</li>
+          </ul>
+        </div>
+        <div class="method-quadrant">
+          <h3>Relacionamento Interpessoal</h3>
+          <ul>
+            <li>Comunicação e relacionamento</li>
+            <li>Liderança e influência</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="#planos" class="btn btn-blue btn-lg">Agende uma demonstração</a>
+    </div>
+  </div>
+</section>
+
+<!-- TECH PARTNERS -->
+<section id="parceiros">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Sucesso em vendas depende de <span style="color:var(--blue)">conhecimento e tecnologia</span></h2>
+      <p>Conheça tecnologias parceiras da PipeLovers</p>
+    </div>
+    <div class="partners-grid fade-in">
+      <a href="https://www.zoho.com/pt-br/crm/signup.html" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/zoho_crm_1x.webp" alt="Zoho CRM"></a>
+      <a href="https://affiliates.wati.io/cxzfp4z54jpv" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/10/New-Project-11.png" alt="WATI"></a>
+      <a href="https://share.hsforms.com/157jGanigRtGgaUStCTC4gg49w7w" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/meetrox_1x.webp" alt="Meetrox"></a>
+      <a href="https://saleshunter.ai/pipelovers-recrutamento/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2026/04/SalesHunter_Horizontal_Monocromatico_Preto-1024x224.png" alt="SalesHunter"></a>
+      <a href="https://www.barte.com/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/07/barte.webp" alt="Barte"></a>
+      <a href="https://www.elephan.ai/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2026/04/elephan-standard-color-1.png" alt="Elephan"></a>
+      <a href="https://escolaexchange.com.br/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/09/New-Project-2.png" alt="Escola Exchange"></a>
+      <a href="https://hubify.com.br/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/09/New-Project-4.png" alt="Hubify"></a>
+      <a href="https://meetz.com.br/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/09/New-Project-7.png" alt="Meetz"></a>
+      <a href="https://www.checkmob.com/" class="partner-logo"><img src="https://www.pipelovers.net/wp-content/uploads/2025/10/New-Project-17.png" alt="Checkmob"></a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">Feedback dos membros</span>
+      <h2>Veja o que os membros dizem sobre a PipeLovers</h2>
+    </div>
+    <div class="testimonials-slider fade-in">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">Nunca vi algo parecido no mercado</h3>
+        <p class="testimonial-quote">Estou amando a proposta de comunidade, nunca vi nada parecido no mercado e é exatamente o que eu precisava. Iniciativa incrível!</p>
+        <div class="testimonial-author">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/julia_1x.webp" alt="Julia Jars">
+          <div><strong>Julia Jars</strong><span>Diretora comercial</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">Oportunidade única para profissionais de vendas</h3>
+        <p class="testimonial-quote">Estar em uma comunidade de aprendizado se tornou um compromisso pessoal com a minha carreira e evolução profissional. Oportunidade única.</p>
+        <div class="testimonial-author">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/mayara_1x.webp" alt="Mayara Tavares">
+          <div><strong>Mayara Tavares</strong><span>Diretora comercial</span></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">Os conteúdos da PipeLovers são incríveis</h3>
+        <p class="testimonial-quote">Achei tão incrível os conteúdos que já estou em 3 grupos diferentes e fiz questão de chamar o Pagotto para falar para todo o time. Parabéns!</p>
+        <div class="testimonial-author">
+          <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/luis_galdino_1x.webp" alt="Luis Galdino">
+          <div><strong>Luis Galdino</strong><span>Diretor comercial</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section id="founder">
+  <div class="container">
+    <div class="founder-grid fade-in">
+      <div class="founder-img">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/Expert-Gustavo-Pagotto.webp" alt="Gustavo Pagotto">
+      </div>
+      <div>
+        <div class="founder-tag">Fundador da PipeLovers</div>
+        <h2>Conheça o Gustavo Pagotto</h2>
+        <ul class="founder-list">
+          <li>Co-autor do livro Arquitetura de Vendas de Alta Performance</li>
+          <li>+15 anos liderando equipes de vendas B2B</li>
+          <li>Executivo de empresas como Linkedin, Creditas e TOTVS</li>
+          <li>Instrutor de Vendas no G4 e Linkedin Learning</li>
+          <li>Embaixador do Zoho CRM no Brasil</li>
+          <li>Investidor Anjo e Membro de Conselho</li>
+          <li>Pioneiro em Social Selling na América Latina</li>
+          <li>Linkedin Creator com foco em Vendas B2B</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="container">
+    <h2>Sucesso em vendas é resultado da <span style="color:var(--blue)">evolução diária!</span></h2>
+    <p>Faça parte da plataforma de vendas B2B que mais cresce no país e se desenvolva todos os dias!</p>
+    <div class="cta-buttons">
+      <a href="#planos" class="btn btn-blue btn-lg">Planos para empresas</a>
+      <a href="https://hub.la/pipelovers" class="btn btn-outline btn-lg">Assinatura individual</a>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE PRICING -->
+<section id="planos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Conheça nossos planos para empresas</h2>
+    </div>
+    <div class="fade-in">
+      <h3 style="font-size:18px;margin-bottom:16px">O que está incluso em todos os planos</h3>
+      <ul class="pricing-features-list">
+        <li>5 aulas ao vivo toda semana</li>
+        <li>+ 700 horas de conteúdo</li>
+        <li>Comunidade para benchmark e networking</li>
+        <li>Plano de desenvolvimento individual</li>
+        <li>Gerente de contas</li>
+        <li>Onboarding individualizado com usuário</li>
+        <li>Envio de relatórios</li>
+        <li>Envio de certificados</li>
+        <li>Divulgação de vagas</li>
+      </ul>
+    </div>
+    <div class="pricing-grid fade-in">
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">3 Licenças</div>
+        <div class="pricing-price">R$ <strong>599</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 3 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/2ftzie4HlM6OUvmqU0J2" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card popular">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">5 Licenças</div>
+        <div class="pricing-discount">5% OFF</div>
+        <div class="pricing-price">R$ <strong>879</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 5 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/cY8h8RBvhaUe0EryJGms" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">10 Licenças</div>
+        <div class="pricing-discount">24% OFF</div>
+        <div class="pricing-price">R$ <strong>1.579</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 10 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/ExRGVfkTHIcmTcJqkqkw" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">15 Licenças</div>
+        <div class="pricing-discount">28% OFF</div>
+        <div class="pricing-price">R$ <strong>1.979</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 15 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/kEMZQyrZ1nTXDKEaoAhN" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">20 Licenças</div>
+        <div class="pricing-discount">31% OFF</div>
+        <div class="pricing-price">R$ <strong>2.579</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 20 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/QANXOiTPKvHc993OPKlr" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">30 Licenças</div>
+        <div class="pricing-discount">34% OFF</div>
+        <div class="pricing-price">R$ <strong>3.579</strong><span>/mês</span></div>
+        <div class="pricing-period">para até 30 usuários</div>
+        <div class="pricing-tag">Sem fidelidade</div>
+        <a href="https://pay.hub.la/5LmEuz3YBvBgk3oSivHZ" class="btn btn-blue">CONTRATAR AGORA</a>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-outline" style="font-size:12px;padding:8px 12px">Falar com vendas</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-plan-name">PLANO</div>
+        <div class="pricing-licenses">Personalizado</div>
+        <div class="pricing-price" style="font-size:20px;margin:12px 0">Fale com a gente</div>
+        <div style="height:32px"></div>
+        <a href="https://api.whatsapp.com/send?phone=551152397549" class="btn btn-green">Fale com nosso time</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--gray);font-size:13px;margin-top:24px">Todos os planos contêm os mesmos benefícios, a única diferença é a quantidade de licenças.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Dúvidas Frequentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">O que é a PipeLovers? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">A PipeLovers é a maior universidade corporativa de vendas B2B, oferecendo conteúdo especializado para Gestão Comercial, Pré-Vendas, Executivos de Vendas e Canais & Parcerias. São 5 aulas ao vivo por semana com especialistas seniores. Toda aula fica disponível na plataforma em até 1 hora para consumo assíncrono.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Como funcionam as aulas ao vivo? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">As aulas seguem um cronograma fixo: <ul><li><strong>Pré-Vendas:</strong> Segunda-feira às 13h</li><li><strong>Gestão Comercial:</strong> Terça-feira às 8h</li><li><strong>Executivo de Vendas:</strong> Quarta-feira às 13h</li><li><strong>Canais & Parcerias:</strong> Quinta-feira às 11h</li><li><strong>PipeLovers Class:</strong> Sexta-feira às 11h</li></ul></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Qual é o valor da assinatura? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Planos baseados em licenças: 3 licenças R$599/mês · 5 licenças R$879/mês · 10 licenças R$1.579/mês · 15 licenças R$1.979/mês · 20 licenças R$2.579/mês · 30 licenças R$3.579/mês · 50 licenças R$5.379/mês</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Há período de fidelidade? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Não. Nossos clientes podem cancelar a qualquer momento, sem burocracia ou custos adicionais.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Como é o pagamento da assinatura? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Aceitamos Cartão de crédito, boleto ou Pix. O que for mais confortável para você.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Quais competências são desenvolvidas na PipeLovers? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Nossa metodologia abrange 4 dimensões e 10 competências essenciais: Visão de Negócio, Conhecimento Técnico, Auto Desenvolvimento e Relacionamento Interpessoal.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">É possível obter uma certificação? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Sim! Participantes que completam os módulos e atividades podem receber certificados que validam as habilidades adquiridas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Como posso cancelar minha assinatura? <span class="faq-icon">+</span></div>
+        <div class="faq-answer">Diretamente pelo painel de controle da sua conta, a qualquer momento, sem burocracia.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <p style="color:var(--gray);margin-bottom:16px">Ainda ficou com alguma dúvida?</p>
+      <a href="https://api.whatsapp.com/send?phone=551152397549&text=Estou%20com%20d%C3%BAvida%20sobre%20a%20PipeLovers" class="btn btn-green btn-lg">Falar com nossa equipe</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/logo-pipelovers.svg" alt="PipeLovers" class="footer-logo" style="height:36px;margin-bottom:16px;display:block">
+        <p style="font-size:13px;color:var(--gray);line-height:1.6">A maior universidade corporativa de vendas B2B do Brasil.</p>
+        <div class="footer-social">
+          <a href="https://br.linkedin.com/school/pipelovers/" title="LinkedIn">in</a>
+          <a href="https://www.youtube.com/@pipelovers" title="YouTube">▶</a>
+          <a href="https://www.instagram.com/pipelovers.br/" title="Instagram">ig</a>
+          <a href="https://api.whatsapp.com/send?phone=551152397549" title="WhatsApp">wa</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Nossos Módulos</h4>
+        <ul>
+          <li><a href="#">Pré-Vendedores</a></li>
+          <li><a href="#">Executivo de vendas</a></li>
+          <li><a href="#">Líderes de vendas</a></li>
+          <li><a href="#">Canais e Parcerias</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="#planos">Para empresas</a></li>
+          <li><a href="https://hub.la/pipelovers">Assinatura individual</a></li>
+          <li><a href="#">Contrate uma Palestra</a></li>
+          <li><a href="#">Sobre a PipeLovers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Vagas em Vendas B2B</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Demonstração</h4>
+        <ul>
+          <li><a href="https://api.whatsapp.com/send?phone=551152397549">Fale Conosco</a></li>
+          <li><a href="https://mkt.pipelovers.net/elevator-pitch-v3">Newsletter</a></li>
+          <li><a href="https://universidade.pipelovers.net/">Login na plataforma</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 PipeLovers · Todos os direitos reservados · 46.778.297/0001-11 - QMR2 LTDA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Navbar scroll
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60 ? 'rgba(2,6,20,0.98)' : 'rgba(2,6,20,0.85)';
+  });
+</script>
+</body>
+</html>
