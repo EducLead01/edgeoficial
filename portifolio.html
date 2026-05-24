@@ -125,6 +125,18 @@
     .marquee-track img:hover { filter: grayscale(0) brightness(1); }
     @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
+    /* INDIVIDUAL PLANS */
+    #planos-individuais { background: var(--bg2); }
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px,1fr)); gap: 24px; margin-top: 48px; }
+    .plan-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color .3s, transform .3s; }
+    .plan-card:hover { border-color: var(--blue); transform: translateY(-4px); }
+    .plan-card.featured { border-color: var(--blue); }
+    .plan-card img { width: 100%; height: 160px; object-fit: cover; display: block; }
+    .plan-card-body { padding: 20px; }
+    .plan-card h3 { font-size: 17px; margin-bottom: 10px; }
+    .plan-card p { font-size: 13px; color: var(--gray); line-height: 1.6; margin-bottom: 20px; }
+    .plan-card .btn { width: 100%; }
+
     /* EXPERTS */
     .experts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 20px; margin-top: 48px; }
     .expert-card img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 12px; display: block; filter: grayscale(.2); transition: transform .3s, filter .3s; }
@@ -278,6 +290,57 @@
     <div class="ticker-item"><strong>100%</strong> Conformidade NR-13 <span class="ticker-dot"></span></div>
   </div>
 </div>
+
+<!-- INDIVIDUAL PLANS -->
+<section id="planos-individuais">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Conteúdo especializado para cada função do seu time comercial</h2>
+    </div>
+    <div class="plans-grid fade-in">
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/executivos_de_vendas.webp" alt="Executivo de Vendas">
+        <div class="plan-card-body">
+          <h3>Executivo de vendas</h3>
+          <p>Ideal para profissionais dedicados à prospecção (Hunters), gestão de carteira (Farmers) e pré-vendedores que desejam avançar na carreira.</p>
+          <a href="https://app.hub.la/checkout/3PmVrl6mCh7cgTY77qke" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/pre_vendas.webp" alt="Pré-vendas">
+        <div class="plan-card-body">
+          <h3>Pré-vendas</h3>
+          <p>O espaço ideal para BDRs e SDRs aprimorarem habilidades em prospecção inbound e outbound, desde geração de leads até qualificação.</p>
+          <a href="https://app.hub.la/checkout/67BsvTZvU1nyNnQRkGgj" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/gest_o_comercial.webp" alt="Gestão Comercial">
+        <div class="plan-card-body">
+          <h3>Gestão Comercial</h3>
+          <p>Para líderes de todos os níveis — coordenadores a diretores. Recomendado também para CEOs de pequenas e médias empresas.</p>
+          <a href="https://app.hub.la/checkout/hpxYvwMHyyNXBh2zY0tM" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/canais_e_parcerias.webp" alt="Canais e Parcerias">
+        <div class="plan-card-body">
+          <h3>Canais e Parcerias</h3>
+          <p>Gerenciado com a Plural Sales. Conteúdo abrangente sobre o ecossistema de canais e parcerias B2B.</p>
+          <a href="https://app.hub.la/checkout/toX4NR34IvtoTGiBBYwA" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+      <div class="plan-card featured">
+        <img src="https://www.pipelovers.net/wp-content/uploads/2025/07/full_pass.webp" alt="Full Pass">
+        <div class="plan-card-body">
+          <h3>Full Pass</h3>
+          <p>Acesso a <strong>todos</strong> os grupos: ✔ Pré-Vendedores ✔ Canais & Parcerias ✔ Executivo de Vendas ✔ Líderes de Vendas</p>
+          <a href="https://app.hub.la/checkout/2ZXNmOxe6oRqEkosOh5g" class="btn btn-blue">Assine agora</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- FEATURES -->
 <section id="features">
