@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     title: "Portfólio | EDGE Engenharia",
     description:
       "Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Energia Solar, Treinamentos e Engenharia Modular.",
-    url: "https://edgeeng.com.br/portfolio",
+    url: "https://edgeeng.com.br/portifolio",
     siteName: "EDGE Engenharia",
     locale: "pt_BR",
     type: "website",
