@@ -175,6 +175,16 @@
     .case-result { font-size: 13px; color: rgba(255,255,255,.85); background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.2); border-radius: 8px; padding: 12px 14px; }
     .case-meta { display: flex; gap: 16px; margin-top: 16px; font-size: 12px; color: var(--gray); }
 
+    /* PARTNERS */
+    #parceiros-hero { background: var(--bg2); padding: 80px 40px; }
+    .partners-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; margin-top: 48px; }
+    .partner-logo { background: #0d1023; border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px; display: flex; align-items: center; justify-content: center; transition: border-color .3s; }
+    .partner-logo:hover { border-color: var(--blue); }
+    .partner-logo img { height: 34px; object-fit: contain; filter: grayscale(.5) brightness(.8); transition: filter .3s; }
+    .partner-logo:hover img { filter: none; }
+    @media (max-width: 900px) { .partners-grid { grid-template-columns: repeat(3,1fr); } }
+    @media (max-width: 600px) { .partners-grid { grid-template-columns: repeat(2,1fr); } }
+
     /* AREAS */
     #areas { background: var(--bg); }
     .areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 24px; margin-top: 48px; }
@@ -308,6 +318,28 @@
     <div class="ticker-item"><strong>100%</strong> Conformidade NR-13 <span class="ticker-dot"></span></div>
   </div>
 </div>
+
+<!-- PARCEIROS -->
+<section id="parceiros-hero">
+  <div class="container">
+    <div class="section-header fade-in">
+      <h2>Projetos de excelência dependem de <span style="color:var(--blue)">parceiros e fornecedores</span> certos</h2>
+      <p>Conheça as marcas que integram nossas soluções</p>
+    </div>
+    <div class="partners-grid fade-in">
+      <div class="partner-logo"><img src="/img/components/customers/flamboyant.png" alt="Flamboyant"></div>
+      <div class="partner-logo"><img src="/img/components/customers/novomundo.png" alt="Novo Mundo"></div>
+      <div class="partner-logo"><img src="/img/components/customers/fujioka.png" alt="Fujioka"></div>
+      <div class="partner-logo"><img src="/img/components/customers/grupo-jorlan.png" alt="Grupo Jorlan"></div>
+      <div class="partner-logo"><img src="/img/components/customers/grupocereal.png" alt="Grupo Cereal"></div>
+      <div class="partner-logo"><img src="/img/components/customers/limagrain-vector-logo.png" alt="Limagrain"></div>
+      <div class="partner-logo"><img src="/img/components/customers/teuto.png" alt="Teuto"></div>
+      <div class="partner-logo"><img src="/img/components/customers/mega-moda-park.png" alt="Mega Moda Park"></div>
+      <div class="partner-logo"><img src="/img/components/customers/coco-bambu-restaurante.png" alt="Coco Bambu"></div>
+      <div class="partner-logo"><img src="/img/components/customers/bandnewsfmgoiania.png" alt="Band News FM"></div>
+    </div>
+  </div>
+</section>
 
 <!-- INDIVIDUAL PLANS -->
 <section id="planos-individuais">
