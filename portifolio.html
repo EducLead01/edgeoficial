@@ -152,6 +152,22 @@
     .area-solar { background: rgba(250,204,21,.15); color: #facc15; }
     .area-nr { background: rgba(249,115,22,.15); color: var(--blue); }
     .area-mod { background: rgba(52,211,153,.15); color: #34d399; }
+    /* NETFLIX CARDS */
+    .netflix-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .netflix-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; cursor: pointer; }
+    .netflix-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .netflix-card:hover img { transform: scale(1.07); }
+    .netflix-card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(2,6,20,.92) 0%, rgba(2,6,20,.3) 50%, transparent 100%);
+      display: flex; flex-direction: column; justify-content: flex-end; padding: 20px;
+      opacity: 0; transition: opacity .3s ease;
+    }
+    .netflix-card:hover .netflix-card-overlay { opacity: 1; }
+    .netflix-card-title { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .netflix-card-desc { font-size: 13px; color: rgba(255,255,255,.7); line-height: 1.5; }
+    @media (max-width: 900px) { .netflix-grid { grid-template-columns: 1fr; } }
+
     .case-card h3 { font-size: 18px; margin-bottom: 12px; }
     .case-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
     .case-result { font-size: 13px; color: rgba(255,255,255,.85); background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.2); border-radius: 8px; padding: 12px 14px; }
@@ -369,6 +385,31 @@
         <div class="feature-visual-stat">
           <span class="num">4,2 anos</span>
           <span class="desc">ROI médio<br>dos projetos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETFLIX CARDS ENERGIA SOLAR -->
+    <div class="netflix-grid fade-in" style="margin-bottom:100px">
+      <div class="netflix-card">
+        <img src="/img/pages/nossas-usinas2.webp" alt="Projeto 1">
+        <div class="netflix-card-overlay">
+          <p class="netflix-card-title">Título do projeto</p>
+          <p class="netflix-card-desc">Descrição breve do case ou projeto de energia solar.</p>
+        </div>
+      </div>
+      <div class="netflix-card">
+        <img src="/img/pages/nossas-usinas2.webp" alt="Projeto 2">
+        <div class="netflix-card-overlay">
+          <p class="netflix-card-title">Título do projeto</p>
+          <p class="netflix-card-desc">Descrição breve do case ou projeto de energia solar.</p>
+        </div>
+      </div>
+      <div class="netflix-card">
+        <img src="/img/pages/nossas-usinas2.webp" alt="Projeto 3">
+        <div class="netflix-card-overlay">
+          <p class="netflix-card-title">Título do projeto</p>
+          <p class="netflix-card-desc">Descrição breve do case ou projeto de energia solar.</p>
         </div>
       </div>
     </div>
