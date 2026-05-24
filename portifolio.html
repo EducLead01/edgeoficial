@@ -10,7 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #020614; --bg2: #060918; --orange: #F97316; --blue: #466EED;
+      --bg: #020614; --bg2: #060918; --green: #00773E; --blue: #466EED;
       --white: #ffffff; --gray: #8b8fa8; --border: #1a1d35;
       --font: 'Host Grotesk', sans-serif;
     }
@@ -34,7 +34,7 @@
     .nav-logo .logo-edge { font-size: 22px; font-weight: 800; letter-spacing: -0.05em; }
     .nav-logo .logo-sub { font-size: 7px; font-weight: 400; letter-spacing: 0.6em; padding-left: 0.6em; text-transform: uppercase; }
     .nav-links { display: flex; gap: 28px; list-style: none; font-size: 14px; font-weight: 500; }
-    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover { color: var(--blue); }
     .nav-actions { display: flex; align-items: center; gap: 12px; }
 
     /* BUTTONS */
@@ -46,14 +46,14 @@
     }
     .btn:hover { opacity: .85; transform: translateY(-1px); }
     .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--white); }
-    .btn-orange { background: var(--orange); color: var(--white); }
     .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-green { background: var(--green); color: var(--white); }
     .btn-lg { padding: 14px 32px; font-size: 15px; }
 
     /* LAYOUT */
     section { padding: 80px 40px; }
     .container { max-width: 1200px; margin: 0 auto; }
-    .label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    .label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
     h1, h2, h3 { line-height: 1.2; font-weight: 700; }
     h1 { font-size: clamp(32px,5vw,56px); }
     h2 { font-size: clamp(28px,4vw,44px); }
@@ -70,7 +70,7 @@
     .hero-tag {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.3);
-      border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--orange);
+      border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--blue);
       font-weight: 600; margin-bottom: 24px;
     }
     .hero-title { margin-bottom: 20px; }
@@ -80,7 +80,7 @@
     .hero-bullets li::before {
       content: '✓'; display: flex; align-items: center; justify-content: center;
       width: 20px; height: 20px; background: rgba(249,115,22,.2); border-radius: 50%;
-      color: var(--orange); font-size: 11px; flex-shrink: 0;
+      color: var(--blue); font-size: 11px; flex-shrink: 0;
     }
     .hero-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .hero-card { background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; }
@@ -98,22 +98,22 @@
       display: flex; align-items: center; gap: 12px; padding: 22px 48px;
       white-space: nowrap; border-right: 1px solid var(--border); font-size: 15px; font-weight: 500;
     }
-    .ticker-item strong { color: var(--orange); font-size: 22px; font-weight: 800; }
-    .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .ticker-item strong { color: var(--blue); font-size: 22px; font-weight: 800; }
+    .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
     @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
     /* FEATURES */
     .feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
     .feature-block.reverse { direction: rtl; }
     .feature-block.reverse > * { direction: ltr; }
-    .feature-label { color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .feature-label { color: var(--blue); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
     .feature-title { margin-bottom: 20px; }
     .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
     .feature-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.75); font-size: 15px; line-height: 1.6; }
-    .feature-list li::before { content: '—'; color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .feature-list li::before { content: '—'; color: var(--blue); flex-shrink: 0; margin-top: 2px; }
     .feature-visual { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 16px; }
     .feature-visual-stat { display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,.04); border-radius: 10px; }
-    .feature-visual-stat .num { font-size: 28px; font-weight: 800; color: var(--orange); }
+    .feature-visual-stat .num { font-size: 28px; font-weight: 800; color: var(--blue); }
     .feature-visual-stat .desc { font-size: 13px; color: var(--gray); text-align: right; }
 
     /* CLIENTS MARQUEE */
@@ -133,7 +133,7 @@
     .case-area { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
     .area-clima { background: rgba(56,189,248,.15); color: #38bdf8; }
     .area-solar { background: rgba(250,204,21,.15); color: #facc15; }
-    .area-nr { background: rgba(249,115,22,.15); color: var(--orange); }
+    .area-nr { background: rgba(249,115,22,.15); color: var(--blue); }
     .area-mod { background: rgba(52,211,153,.15); color: #34d399; }
     .case-card h3 { font-size: 18px; margin-bottom: 12px; }
     .case-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
@@ -168,7 +168,7 @@
     .footer-top { display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
     .footer-social { display: flex; gap: 10px; margin-top: 16px; }
     .footer-social a { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--gray); transition: color .2s, border-color .2s; }
-    .footer-social a:hover { color: var(--white); border-color: var(--orange); }
+    .footer-social a:hover { color: var(--white); border-color: var(--blue); }
     .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; color: rgba(255,255,255,.5); }
     .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
     .footer-col ul a { font-size: 14px; color: var(--gray); transition: color .2s; }
@@ -212,7 +212,7 @@
     <li><a href="/#engenharia-modular">Engenharia Modular</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-orange">Falar com a EDGE</a>
+    <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-blue">Falar com a EDGE</a>
   </div>
 </nav>
 
@@ -222,7 +222,7 @@
     <div class="hero-grid">
       <div class="fade-in">
         <div class="hero-tag">🏗️ Panorama Geral</div>
-        <h1 class="hero-title">A <span style="color:var(--orange)">EDGE Engenharia</span> em números, projetos e resultados.</h1>
+        <h1 class="hero-title">A <span style="color:var(--blue)">EDGE Engenharia</span> em números, projetos e resultados.</h1>
         <p class="hero-subtitle">Há mais de uma década entregando soluções completas de climatização, energia solar, treinamentos e engenharia modular para empresas do Centro-Oeste e além.</p>
         <ul class="hero-bullets">
           <li>+200 projetos entregues em 10 anos</li>
@@ -230,7 +230,7 @@
           <li>Equipe com profissionais habilitados e certificados</li>
           <li>Atendimento em 5 estados brasileiros</li>
         </ul>
-        <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+conhecer+as+solu%C3%A7%C3%B5es+da+EDGE" target="_blank" class="btn btn-orange btn-lg">FALAR COM UM ESPECIALISTA</a>
+        <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+conhecer+as+solu%C3%A7%C3%B5es+da+EDGE" target="_blank" class="btn btn-blue btn-lg">FALAR COM UM ESPECIALISTA</a>
       </div>
       <div class="hero-cards fade-in" style="transition-delay:.2s">
         <div class="hero-card">
@@ -292,7 +292,7 @@
           <li>Retrofit de sistemas antigos com manutenção da operação.</li>
           <li>Comissionamento, teste e entrega com documentação completa.</li>
         </ul>
-        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-blue">Solicitar orçamento</a>
       </div>
       <div class="feature-visual fade-in">
         <div class="feature-visual-stat">
@@ -320,7 +320,7 @@
           <li>ROI médio de 4 a 5 anos com geração própria.</li>
           <li>Integração com geradores de backup e sistemas de armazenamento.</li>
         </ul>
-        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-blue">Solicitar orçamento</a>
       </div>
       <div class="feature-visual fade-in">
         <div class="feature-visual-stat">
@@ -348,7 +348,7 @@
           <li>Profissionais Habilitados (PH) aptos a assinar documentos técnicos.</li>
           <li>Suporte na primeira inspeção periódica e por 90 dias pós-treinamento.</li>
         </ul>
-        <a href="/treinamentos/nr13" class="btn btn-orange">Ver page NR-13</a>
+        <a href="/treinamentos/nr13" class="btn btn-blue">Ver page NR-13</a>
       </div>
       <div class="feature-visual fade-in">
         <div class="feature-visual-stat">
@@ -376,7 +376,7 @@
           <li>Prazo até 3x menor que construção convencional.</li>
           <li>Ideal para câmaras frias, laboratórios, salas técnicas e expansões industriais.</li>
         </ul>
-        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-blue">Solicitar orçamento</a>
       </div>
       <div class="feature-visual fade-in">
         <div class="feature-visual-stat">
@@ -551,10 +551,10 @@
 <!-- CTA -->
 <section id="cta-section">
   <div class="container">
-    <h2>Leve a EDGE para o <span style="color:var(--orange)">seu próximo projeto.</span></h2>
+    <h2>Leve a EDGE para o <span style="color:var(--blue)">seu próximo projeto.</span></h2>
     <p>Fale com nossa equipe e receba um diagnóstico gratuito da sua demanda em até 24 horas.</p>
     <div class="cta-buttons">
-      <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+um+diagn%C3%B3stico+gratuito" target="_blank" class="btn btn-orange btn-lg">Diagnóstico gratuito</a>
+      <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+um+diagn%C3%B3stico+gratuito" target="_blank" class="btn btn-green btn-lg">Diagnóstico gratuito</a>
       <a href="/" class="btn btn-outline btn-lg">Conhecer os serviços</a>
     </div>
   </div>
