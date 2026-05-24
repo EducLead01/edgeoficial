@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Portfólio | EDGE Engenharia</title>
+  <meta name="description" content="Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Energia Solar, Treinamentos e Engenharia Modular.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #020614; --bg2: #060918; --orange: #F97316; --blue: #466EED;
+      --white: #ffffff; --gray: #8b8fa8; --border: #1a1d35;
+      --font: 'Host Grotesk', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--bg); color: var(--white); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; height: auto; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 40px; height: 70px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(2,6,20,0.85); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06); transition: background .3s;
+    }
+    .nav-logo {
+      display: flex; flex-direction: column; align-items: center;
+      font-family: var(--font); color: var(--white); line-height: 1;
+    }
+    .nav-logo .logo-edge { font-size: 22px; font-weight: 800; letter-spacing: -0.05em; }
+    .nav-logo .logo-sub { font-size: 7px; font-weight: 400; letter-spacing: 0.6em; padding-left: 0.6em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 28px; list-style: none; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 10px 22px; border-radius: 999px; font-family: var(--font);
+      font-size: 13px; font-weight: 600; cursor: pointer;
+      transition: opacity .2s, transform .2s; border: none; white-space: nowrap;
+    }
+    .btn:hover { opacity: .85; transform: translateY(-1px); }
+    .btn-outline { background: transparent; border: 1px solid rgba(255,255,255,.2); color: var(--white); }
+    .btn-orange { background: var(--orange); color: var(--white); }
+    .btn-blue { background: var(--blue); color: var(--white); }
+    .btn-lg { padding: 14px 32px; font-size: 15px; }
+
+    /* LAYOUT */
+    section { padding: 80px 40px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .label { display: inline-block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+    h1, h2, h3 { line-height: 1.2; font-weight: 700; }
+    h1 { font-size: clamp(32px,5vw,56px); }
+    h2 { font-size: clamp(28px,4vw,44px); }
+    h3 { font-size: clamp(18px,2.5vw,26px); }
+    .section-header { text-align: center; margin-bottom: 64px; }
+    .section-header p { color: var(--gray); font-size: 17px; max-width: 600px; margin: 16px auto 0; }
+
+    /* HERO */
+    #hero {
+      padding-top: 140px; min-height: 100vh; display: flex; align-items: center;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(249,115,22,.10) 0%, transparent 70%), var(--bg);
+    }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,.12); border: 1px solid rgba(249,115,22,.3);
+      border-radius: 999px; padding: 6px 14px; font-size: 12px; color: var(--orange);
+      font-weight: 600; margin-bottom: 24px;
+    }
+    .hero-title { margin-bottom: 20px; }
+    .hero-subtitle { color: var(--gray); font-size: 17px; margin-bottom: 32px; line-height: 1.7; }
+    .hero-bullets { list-style: none; margin-bottom: 40px; display: flex; flex-direction: column; gap: 10px; }
+    .hero-bullets li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: rgba(255,255,255,.85); }
+    .hero-bullets li::before {
+      content: '✓'; display: flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; background: rgba(249,115,22,.2); border-radius: 50%;
+      color: var(--orange); font-size: 11px; flex-shrink: 0;
+    }
+    .hero-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .hero-card { background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; }
+    .hero-card-icon { font-size: 28px; margin-bottom: 10px; }
+    .hero-card h4 { font-size: 15px; margin-bottom: 6px; }
+    .hero-card p { font-size: 13px; color: var(--gray); }
+
+    /* STATS TICKER */
+    #stats-ticker {
+      padding: 0; background: #060918;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); overflow: hidden;
+    }
+    .ticker-track { display: flex; animation: ticker 30s linear infinite; width: max-content; }
+    .ticker-item {
+      display: flex; align-items: center; gap: 12px; padding: 22px 48px;
+      white-space: nowrap; border-right: 1px solid var(--border); font-size: 15px; font-weight: 500;
+    }
+    .ticker-item strong { color: var(--orange); font-size: 22px; font-weight: 800; }
+    .ticker-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* FEATURES */
+    .feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
+    .feature-block.reverse { direction: rtl; }
+    .feature-block.reverse > * { direction: ltr; }
+    .feature-label { color: var(--orange); font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; }
+    .feature-title { margin-bottom: 20px; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.75); font-size: 15px; line-height: 1.6; }
+    .feature-list li::before { content: '—'; color: var(--orange); flex-shrink: 0; margin-top: 2px; }
+    .feature-visual { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 16px; padding: 40px; display: flex; flex-direction: column; gap: 16px; }
+    .feature-visual-stat { display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,.04); border-radius: 10px; }
+    .feature-visual-stat .num { font-size: 28px; font-weight: 800; color: var(--orange); }
+    .feature-visual-stat .desc { font-size: 13px; color: var(--gray); text-align: right; }
+
+    /* CLIENTS MARQUEE */
+    #clients { background: #060918; padding: 60px 0; }
+    #clients .section-header { padding: 0 40px; margin-bottom: 48px; }
+    .marquee-wrap { overflow: hidden; mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
+    .marquee-track { display: flex; animation: marquee 35s linear infinite; width: max-content; gap: 48px; padding: 8px 0; align-items: center; }
+    .marquee-track img { height: 40px; object-fit: contain; filter: grayscale(1) brightness(.7); transition: filter .3s; flex-shrink: 0; }
+    .marquee-track img:hover { filter: grayscale(0) brightness(1); }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* CASES */
+    #cases { background: var(--bg2); }
+    .cases-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px,1fr)); gap: 24px; margin-top: 48px; }
+    .case-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color .3s, transform .3s; }
+    .case-card:hover { border-color: rgba(249,115,22,.4); transform: translateY(-4px); }
+    .case-area { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 4px 12px; border-radius: 999px; margin-bottom: 16px; }
+    .area-clima { background: rgba(56,189,248,.15); color: #38bdf8; }
+    .area-solar { background: rgba(250,204,21,.15); color: #facc15; }
+    .area-nr { background: rgba(249,115,22,.15); color: var(--orange); }
+    .area-mod { background: rgba(52,211,153,.15); color: #34d399; }
+    .case-card h3 { font-size: 18px; margin-bottom: 12px; }
+    .case-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 16px; }
+    .case-result { font-size: 13px; color: rgba(255,255,255,.85); background: rgba(249,115,22,.08); border: 1px solid rgba(249,115,22,.2); border-radius: 8px; padding: 12px 14px; }
+    .case-meta { display: flex; gap: 16px; margin-top: 16px; font-size: 12px; color: var(--gray); }
+
+    /* AREAS */
+    #areas { background: var(--bg); }
+    .areas-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 24px; margin-top: 48px; }
+    .area-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color .3s, transform .3s; }
+    .area-card:hover { border-color: rgba(249,115,22,.4); transform: translateY(-4px); }
+    .area-icon { font-size: 36px; margin-bottom: 16px; }
+    .area-card h3 { font-size: 18px; margin-bottom: 10px; }
+    .area-card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    .testimonials-slider { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+    .testimonial-card { background: #0d1023; border: 1px solid var(--border); border-radius: 16px; padding: 32px; transition: border-color .3s; }
+    .testimonial-card:hover { border-color: rgba(249,115,22,.4); }
+    .stars { color: #f59e0b; font-size: 16px; margin-bottom: 16px; }
+    .testimonial-quote { font-size: 15px; color: rgba(255,255,255,.8); line-height: 1.7; margin-bottom: 24px; font-style: italic; }
+    .testimonial-author strong { font-size: 14px; display: block; }
+    .testimonial-author span { font-size: 12px; color: var(--gray); }
+
+    /* CTA */
+    #cta-section { background: linear-gradient(135deg, rgba(249,115,22,.2) 0%, rgba(70,110,237,.1) 100%), var(--bg); text-align: center; padding: 100px 40px; }
+    #cta-section p { color: var(--gray); font-size: 17px; margin: 16px auto 40px; max-width: 500px; }
+    .cta-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* FOOTER */
+    footer { background: #040817; border-top: 1px solid var(--border); padding: 60px 40px 40px; }
+    .footer-top { display: grid; grid-template-columns: 200px 1fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .footer-social a { width: 34px; height: 34px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: var(--gray); transition: color .2s, border-color .2s; }
+    .footer-social a:hover { color: var(--white); border-color: var(--orange); }
+    .footer-col h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; color: rgba(255,255,255,.5); }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: 14px; color: var(--gray); transition: color .2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; font-size: 13px; color: var(--gray); flex-wrap: wrap; gap: 8px; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      section { padding: 60px 20px; }
+      .hero-grid, .feature-block, .feature-block.reverse { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
+      .hero-cards { grid-template-columns: 1fr; }
+      .testimonials-slider { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      #cta-section { padding: 60px 20px; }
+    }
+    @media (max-width: 600px) {
+      .footer-top { grid-template-columns: 1fr; }
+      .cases-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="logo-edge">EDGE</span>
+    <span class="logo-sub">Engenharia</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Início</a></li>
+    <li><a href="/#climatizacao">Climatização</a></li>
+    <li><a href="/#energia-solar">Energia Solar</a></li>
+    <li><a href="/#treinamentos">Treinamentos</a></li>
+    <li><a href="/#engenharia-modular">Engenharia Modular</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-orange">Falar com a EDGE</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-in">
+        <div class="hero-tag">🏗️ Panorama Geral</div>
+        <h1 class="hero-title">A <span style="color:var(--orange)">EDGE Engenharia</span> em números, projetos e resultados.</h1>
+        <p class="hero-subtitle">Há mais de uma década entregando soluções completas de climatização, energia solar, treinamentos e engenharia modular para empresas do Centro-Oeste e além.</p>
+        <ul class="hero-bullets">
+          <li>+200 projetos entregues em 10 anos</li>
+          <li>Climatização, Energia Solar, NR-13 e Modular</li>
+          <li>Equipe com profissionais habilitados e certificados</li>
+          <li>Atendimento em 5 estados brasileiros</li>
+        </ul>
+        <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+conhecer+as+solu%C3%A7%C3%B5es+da+EDGE" target="_blank" class="btn btn-orange btn-lg">FALAR COM UM ESPECIALISTA</a>
+      </div>
+      <div class="hero-cards fade-in" style="transition-delay:.2s">
+        <div class="hero-card">
+          <div class="hero-card-icon">❄️</div>
+          <h4>Climatização</h4>
+          <p>VRF, Split, Chiller e sistemas centrais para grandes áreas.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">☀️</div>
+          <h4>Energia Solar</h4>
+          <p>Usinas fotovoltaicas on-grid e off-grid de médio e grande porte.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🎓</div>
+          <h4>Treinamentos</h4>
+          <p>NR-13, NR-10, NR-12 e outras normas regulamentadoras.</p>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-icon">🏗️</div>
+          <h4>Eng. Modular</h4>
+          <p>Estruturas industriais modulares com prazo e custo reduzidos.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS TICKER -->
+<div id="stats-ticker">
+  <div class="ticker-track">
+    <div class="ticker-item"><strong>+200</strong> Projetos entregues <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>+10</strong> Anos de mercado <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>+80</strong> Clientes ativos <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>5</strong> Estados atendidos <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>100%</strong> Conformidade NR-13 <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>+200</strong> Projetos entregues <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>+10</strong> Anos de mercado <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>+80</strong> Clientes ativos <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>5</strong> Estados atendidos <span class="ticker-dot"></span></div>
+    <div class="ticker-item"><strong>100%</strong> Conformidade NR-13 <span class="ticker-dot"></span></div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">O que fazemos</span>
+      <h2>Soluções completas para toda a jornada do seu projeto</h2>
+    </div>
+
+    <div class="feature-block fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Climatização</div>
+        <h2 class="feature-title">Conforto térmico em larga escala</h2>
+        <ul class="feature-list">
+          <li>Projetos executivos de sistemas VRF, Chiller e Split de alta capacidade.</li>
+          <li>Instalação certificada para hospitais, shoppings, indústrias e condomínios.</li>
+          <li>Retrofit de sistemas antigos com manutenção da operação.</li>
+          <li>Comissionamento, teste e entrega com documentação completa.</li>
+        </ul>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+      </div>
+      <div class="feature-visual fade-in">
+        <div class="feature-visual-stat">
+          <span class="num">480 TR</span>
+          <span class="desc">Maior sistema<br>instalado (Shopping)</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">42.000 m²</span>
+          <span class="desc">Área climatizada<br>em um único projeto</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">340</span>
+          <span class="desc">Unidades internas<br>instaladas</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-block reverse fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Energia Solar</div>
+        <h2 class="feature-title">Reduza sua conta de energia em até 65%</h2>
+        <ul class="feature-list">
+          <li>Sistemas fotovoltaicos on-grid para indústrias, frigoríficos e agronegócio.</li>
+          <li>Projetos de até 1,2 MWp com monitoramento remoto 24h.</li>
+          <li>ROI médio de 4 a 5 anos com geração própria.</li>
+          <li>Integração com geradores de backup e sistemas de armazenamento.</li>
+        </ul>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+      </div>
+      <div class="feature-visual fade-in">
+        <div class="feature-visual-stat">
+          <span class="num">1,2 MWp</span>
+          <span class="desc">Maior usina<br>instalada</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">65%</span>
+          <span class="desc">Redução média<br>na conta de energia</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">4,2 anos</span>
+          <span class="desc">ROI médio<br>dos projetos</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-block fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Treinamentos NR-13</div>
+        <h2 class="feature-title">Regularize sua operação, evite interdições</h2>
+        <ul class="feature-list">
+          <li>Treinamentos teórico-práticos in loco com equipamentos reais.</li>
+          <li>Elaboração do Prontuário, PIS e Registro de Segurança.</li>
+          <li>Profissionais Habilitados (PH) aptos a assinar documentos técnicos.</li>
+          <li>Suporte na primeira inspeção periódica e por 90 dias pós-treinamento.</li>
+        </ul>
+        <a href="/treinamentos/nr13" class="btn btn-orange">Ver page NR-13</a>
+      </div>
+      <div class="feature-visual fade-in">
+        <div class="feature-visual-stat">
+          <span class="num">48</span>
+          <span class="desc">Operadores capacitados<br>em um único projeto</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">45 dias</span>
+          <span class="desc">Prazo médio para<br>regularização completa</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">R$ 280k</span>
+          <span class="desc">Economia em multas<br>evitadas (um cliente)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-block reverse fade-in">
+      <div class="feature-text">
+        <div class="feature-label">Engenharia Modular</div>
+        <h2 class="feature-title">Expanda sua planta industrial em 90 dias</h2>
+        <ul class="feature-list">
+          <li>Estruturas metálicas modulares com painéis isotérmicos e instalações completas.</li>
+          <li>Projeto, fabricação e montagem sob responsabilidade da EDGE.</li>
+          <li>Prazo até 3x menor que construção convencional.</li>
+          <li>Ideal para câmaras frias, laboratórios, salas técnicas e expansões industriais.</li>
+        </ul>
+        <a href="https://wa.me/5562991605338" target="_blank" class="btn btn-orange">Solicitar orçamento</a>
+      </div>
+      <div class="feature-visual fade-in">
+        <div class="feature-visual-stat">
+          <span class="num">800 m²</span>
+          <span class="desc">Maior módulo<br>entregue</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">90 dias</span>
+          <span class="desc">Do projeto à<br>entrega</span>
+        </div>
+        <div class="feature-visual-stat">
+          <span class="num">3x</span>
+          <span class="desc">Mais rápido que<br>construção convencional</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTS -->
+<section id="clients">
+  <div class="container">
+    <div class="section-header fade-in" style="padding:0">
+      <h2>Clientes que confiam na EDGE</h2>
+    </div>
+  </div>
+  <div style="margin-top:40px">
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <img src="/img/components/customers/flamboyant.png" alt="Flamboyant">
+        <img src="/img/components/customers/novomundo.png" alt="Novo Mundo">
+        <img src="/img/components/customers/coco-bambu-restaurante.png" alt="Coco Bambu">
+        <img src="/img/components/customers/fujioka.png" alt="Fujioka">
+        <img src="/img/components/customers/grupo-jorlan.png" alt="Grupo Jorlan">
+        <img src="/img/components/customers/mega-moda-park.png" alt="Mega Moda Park">
+        <img src="/img/components/customers/grupocereal.png" alt="Grupo Cereal">
+        <img src="/img/components/customers/limagrain-vector-logo.png" alt="Limagrain">
+        <img src="/img/components/customers/bandnewsfmgoiania.png" alt="Band News FM">
+        <img src="/img/components/customers/teuto.png" alt="Teuto">
+        <img src="/img/components/customers/flamboyant.png" alt="Flamboyant">
+        <img src="/img/components/customers/novomundo.png" alt="Novo Mundo">
+        <img src="/img/components/customers/coco-bambu-restaurante.png" alt="Coco Bambu">
+        <img src="/img/components/customers/fujioka.png" alt="Fujioka">
+        <img src="/img/components/customers/grupo-jorlan.png" alt="Grupo Jorlan">
+        <img src="/img/components/customers/mega-moda-park.png" alt="Mega Moda Park">
+        <img src="/img/components/customers/grupocereal.png" alt="Grupo Cereal">
+        <img src="/img/components/customers/limagrain-vector-logo.png" alt="Limagrain">
+        <img src="/img/components/customers/bandnewsfmgoiania.png" alt="Band News FM">
+        <img src="/img/components/customers/teuto.png" alt="Teuto">
+      </div>
+    </div>
+    <div style="margin-top:20px">
+      <div class="marquee-wrap">
+        <div class="marquee-track" style="animation-direction:reverse;animation-duration:40s">
+          <img src="/img/components/customers/richesse.png" alt="Richesse">
+          <img src="/img/components/customers/triunfoconcebra.png" alt="Triunfo Concebra">
+          <img src="/img/components/customers/curtidoratocantins.png" alt="Curtidora Tocantins">
+          <img src="/img/components/customers/drogariasantamarta.png" alt="Drogaria Santa Marta">
+          <img src="/img/components/customers/piquiras.png" alt="Piquiras">
+          <img src="/img/components/customers/lifebox.png" alt="Lifebox">
+          <img src="/img/components/customers/luidoices.png" alt="Lui Doices">
+          <img src="/img/components/customers/teashop.png" alt="Tea Shop">
+          <img src="/img/components/customers/igreja-luz.png" alt="Igreja Luz">
+          <img src="/img/components/customers/coming.png" alt="Coming">
+          <img src="/img/components/customers/richesse.png" alt="Richesse">
+          <img src="/img/components/customers/triunfoconcebra.png" alt="Triunfo Concebra">
+          <img src="/img/components/customers/curtidoratocantins.png" alt="Curtidora Tocantins">
+          <img src="/img/components/customers/drogariasantamarta.png" alt="Drogaria Santa Marta">
+          <img src="/img/components/customers/piquiras.png" alt="Piquiras">
+          <img src="/img/components/customers/lifebox.png" alt="Lifebox">
+          <img src="/img/components/customers/luidoices.png" alt="Lui Doices">
+          <img src="/img/components/customers/teashop.png" alt="Tea Shop">
+          <img src="/img/components/customers/igreja-luz.png" alt="Igreja Luz">
+          <img src="/img/components/customers/coming.png" alt="Coming">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section id="cases">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">Resultados reais</span>
+      <h2>Cases de projetos entregues</h2>
+      <p>Cada projeto é uma solução personalizada para o desafio real do cliente.</p>
+    </div>
+    <div class="cases-grid fade-in">
+      <div class="case-card">
+        <span class="case-area area-clima">Climatização</span>
+        <h3>Sistema VRF — Shopping Center</h3>
+        <p>Projeto executivo e instalação de 480 TR com 340 unidades internas, cobrindo 42.000 m². Controle centralizado com BMS.</p>
+        <div class="case-result">✓ Entregue no prazo com zero interrupção das operações do shopping.</div>
+        <div class="case-meta"><span>📍 Goiânia / GO</span><span>📅 2024</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-area area-solar">Energia Solar</span>
+        <h3>Usina Fotovoltaica Industrial — 1,2 MWp</h3>
+        <p>Sistema on-grid para indústria química. Redução de 65% na conta de energia com ROI em 4,2 anos.</p>
+        <div class="case-result">✓ Economia de R$ 180 mil/ano comprovada no primeiro ano de operação.</div>
+        <div class="case-meta"><span>📍 Anápolis / GO</span><span>📅 2024</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-area area-nr">NR-13</span>
+        <h3>Regularização de Vasos de Pressão</h3>
+        <p>Empresa com 12 vasos sem documentação. Elaboração de Prontuário, Registro de Segurança, PIS e treinamento da brigada interna.</p>
+        <div class="case-result">✓ 100% regularizado em 45 dias. Zero notificações na vistoria seguinte.</div>
+        <div class="case-meta"><span>📍 Goiânia / GO</span><span>📅 2023</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-area area-mod">Eng. Modular</span>
+        <h3>Expansão de Planta Frigorífica</h3>
+        <p>Módulo de processamento de 800 m² com estrutura metálica, painéis isotérmicos e instalações prediais completas.</p>
+        <div class="case-result">✓ Entregue em 90 dias. Custo 40% abaixo da construção convencional.</div>
+        <div class="case-meta"><span>📍 Itumbiara / GO</span><span>📅 2023</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-area area-clima">Climatização</span>
+        <h3>Retrofit HVAC — Hospital</h3>
+        <p>Substituição de sistema central por fan-coils de alta eficiência em UTI e centros cirúrgicos, sem interrupção das operações.</p>
+        <div class="case-result">✓ Redução de 35% no consumo energético. Operação 24h mantida durante obras.</div>
+        <div class="case-meta"><span>📍 Goiânia / GO</span><span>📅 2022</span></div>
+      </div>
+      <div class="case-card">
+        <span class="case-area area-solar">Energia Solar</span>
+        <h3>Geração Distribuída — Agronegócio</h3>
+        <p>Sistema de 480 kWp para irrigação e processamento de grãos. Integração com gerador de backup e monitoramento remoto 24h.</p>
+        <div class="case-result">✓ Operação estabilizada. Economia de R$ 85 mil/ano na conta de energia.</div>
+        <div class="case-meta"><span>📍 Jataí / GO</span><span>📅 2022</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="label">O que dizem nossos clientes</span>
+      <h2>Confiança construída projeto a projeto</h2>
+    </div>
+    <div class="testimonials-slider fade-in">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">Regularizaram tudo em tempo recorde</h3>
+        <p class="testimonial-quote">Estávamos sob risco de interdição pela fiscalização. A EDGE entrou, levantou todos os dados, elaborou a documentação e capacitou nossa equipe em menos de 45 dias. Resultado: aprovamos a vistoria sem nenhuma notificação.</p>
+        <div class="testimonial-author">
+          <strong>Gerente Industrial</strong><span>Indústria Alimentícia — Goiânia / GO</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">ROI comprovado no primeiro ano</h3>
+        <p class="testimonial-quote">Instalamos 1,2 MWp com a EDGE e no primeiro ano já comprovamos uma economia de R$ 180 mil na conta de energia. O projeto foi entregue dentro do prazo e com toda a documentação em dia.</p>
+        <div class="testimonial-author">
+          <strong>Diretor de Operações</strong><span>Indústria Química — Anápolis / GO</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <h3 style="font-size:18px;margin-bottom:12px">Expansão entregue em 90 dias</h3>
+        <p class="testimonial-quote">Precisávamos expandir nossa planta com urgência. A EDGE projetou e entregou um módulo de 800 m² em 90 dias, 40% mais barato que uma construção convencional. Superou todas as expectativas.</p>
+        <div class="testimonial-author">
+          <strong>Diretor Administrativo</strong><span>Frigorífico — Itumbiara / GO</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-section">
+  <div class="container">
+    <h2>Leve a EDGE para o <span style="color:var(--orange)">seu próximo projeto.</span></h2>
+    <p>Fale com nossa equipe e receba um diagnóstico gratuito da sua demanda em até 24 horas.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+quero+um+diagn%C3%B3stico+gratuito" target="_blank" class="btn btn-orange btn-lg">Diagnóstico gratuito</a>
+      <a href="/" class="btn btn-outline btn-lg">Conhecer os serviços</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div style="display:flex;flex-direction:column;align-items:flex-start;margin-bottom:16px">
+          <span style="font-size:22px;font-weight:800;letter-spacing:-0.05em;line-height:1">EDGE</span>
+          <span style="font-size:7px;font-weight:400;letter-spacing:0.6em;padding-left:0.6em;text-transform:uppercase">Engenharia</span>
+        </div>
+        <p style="font-size:13px;color:var(--gray);line-height:1.6">Soluções completas em Climatização, Energia Solar, Treinamentos e Engenharia Modular.</p>
+        <div class="footer-social">
+          <a href="#" title="Instagram">ig</a>
+          <a href="#" title="LinkedIn">in</a>
+          <a href="https://wa.me/5562991605338" title="WhatsApp">wa</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="/#climatizacao">Climatização</a></li>
+          <li><a href="/#energia-solar">Energia Solar</a></li>
+          <li><a href="/#treinamentos">Treinamentos</a></li>
+          <li><a href="/#engenharia-modular">Engenharia Modular</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Treinamentos</h4>
+        <ul>
+          <li><a href="/treinamentos/nr13">NR-13 — Vasos de Pressão</a></li>
+          <li><a href="#">NR-10 — Segurança em Eletricidade</a></li>
+          <li><a href="#">NR-12 — Segurança em Máquinas</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul>
+          <li><a href="https://wa.me/5562991605338">WhatsApp</a></li>
+          <li><a href="/">Site principal</a></li>
+          <li><a href="/portifolio">Portfólio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 EDGE Engenharia — Todos os direitos reservados</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60 ? 'rgba(2,6,20,0.98)' : 'rgba(2,6,20,0.85)';
+  });
+</script>
+</body>
+</html>

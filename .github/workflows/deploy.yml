@@ -32,6 +32,7 @@ jobs:
         run: |
           cp index.html out/index.html
           cp links.html out/links.html
+          cp portifolio.html out/portifolio.html
           cp -r public/img out/img 2>/dev/null || true
           cp -r public/images out/images 2>/dev/null || true
           cp -r public/seo out/seo 2>/dev/null || true
