@@ -28,6 +28,15 @@ jobs:
 
       - run: npm run build
 
+      - name: Overlay static files onto Next.js output
+        run: |
+          cp index.html out/index.html
+          cp links.html out/links.html
+          cp -r public/img out/img 2>/dev/null || true
+          cp -r public/images out/images 2>/dev/null || true
+          cp -r public/seo out/seo 2>/dev/null || true
+          cp -r public/videos out/videos 2>/dev/null || true
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: out
