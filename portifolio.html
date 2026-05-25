@@ -244,12 +244,11 @@
 
 <!-- NAV -->
 <nav>
-  <a href="/" class="nav-logo">
+  <span class="nav-logo" style="cursor:default;">
     <span class="logo-edge">EDGE</span>
     <span class="logo-sub">Engenharia</span>
-  </a>
+  </span>
   <ul class="nav-links">
-    <li><a href="/">Início</a></li>
     <li><a href="/#climatizacao">Climatização</a></li>
     <li><a href="/#energia-solar">Energia Solar</a></li>
     <li><a href="/#treinamentos">Treinamentos</a></li>
@@ -690,6 +689,11 @@
 </footer>
 
 <script>
+  history.pushState(null, '', window.location.href);
+  window.addEventListener('popstate', () => {
+    history.pushState(null, '', window.location.href);
+  });
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
