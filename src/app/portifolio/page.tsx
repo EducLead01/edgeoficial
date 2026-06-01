@@ -3,25 +3,16 @@ import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
-import {
-  Wind,
-  Sun,
-  GraduationCap,
-  Layers,
-  Phone,
-  ArrowRight,
-  MapPin,
-  Calendar,
-} from "lucide-react";
+import { Phone, ArrowRight, MapPin, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Portfólio | EDGE Engenharia",
   description:
-    "Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Energia Solar, Treinamentos e Engenharia Modular.",
+    "Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Soluções em Energia, Centro de Treinamento e Reciclagem e Engenharia.",
   openGraph: {
     title: "Portfólio | EDGE Engenharia",
     description:
-      "Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Energia Solar, Treinamentos e Engenharia Modular.",
+      "Conheça o portfólio e o panorama completo da EDGE Engenharia — Climatização, Soluções em Energia, Centro de Treinamento e Reciclagem e Engenharia.",
     url: "https://edgeeng.com.br/portifolio",
     siteName: "EDGE Engenharia",
     locale: "pt_BR",
@@ -31,28 +22,34 @@ export const metadata: Metadata = {
 
 const areas = [
   {
-    icon: Wind,
-    title: "Climatização",
-    desc: "Projetos e instalações de sistemas de ar-condicionado para indústrias, comércios e condomínios. Da especificação ao comissionamento.",
-    href: "/#climatizacao",
-  },
-  {
-    icon: Sun,
-    title: "Energia Solar",
+    image: "https://edgeeng.com.br/img/pages/nossas-usinas2.webp",
+    title: "Soluções em Energia",
     desc: "Soluções fotovoltaicas on-grid e off-grid para redução de custo energético em médio e grande porte.",
     href: "/#energia-solar",
   },
   {
-    icon: GraduationCap,
-    title: "Treinamentos",
-    desc: "Capacitação técnica em NRs, segurança do trabalho e operação de equipamentos industriais, com emissão de certificados.",
+    image: "https://edgeeng.com.br/img/components/products-card/arrendamento-de-usinas-thumb.png",
+    title: "Engenharia",
+    desc: "Estruturas industriais modulares com prazo até 3x menor que a construção convencional e custo reduzido.",
+    href: "/#engenharia-modular",
+  },
+  {
+    image: "https://edgeeng.com.br/img/components/products-card/gestao-de-energia-thumb.png",
+    title: "Centro de Treinamento e Reciclagem",
+    desc: "Capacitação técnica em NR-13, NR-10, NR-12 e outras normas regulamentadoras, com emissão de certificados.",
     href: "/#treinamentos",
   },
   {
-    icon: Layers,
-    title: "Engenharia Modular",
-    desc: "Desenvolvimento de estruturas modulares e projetos sob medida para expansão industrial com menor prazo e custo.",
-    href: "/#engenharia-modular",
+    image: "https://edgeeng.com.br/img/components/products-card/consultoria-juridica-thumb.png",
+    title: "Inspeções e Laudos",
+    desc: "Laudos técnicos, inspeções periódicas e documentação para equipamentos industriais com Anotação de Responsabilidade Técnica.",
+    href: "/#inspecoes",
+  },
+  {
+    image: "https://edgeeng.com.br/img/pages/banner2.webp",
+    title: "Climatização",
+    desc: "Projetos e instalações de sistemas VRF, Chiller e Split para grandes áreas — hospitais, shoppings e indústrias.",
+    href: "/#climatizacao",
   },
 ];
 
@@ -61,6 +58,7 @@ const numeros = [
   { valor: "+10", label: "Anos de mercado" },
   { valor: "+80", label: "Clientes ativos" },
   { valor: "5", label: "Estados atendidos" },
+  { valor: "100%", label: "Conformidade NR-13" },
 ];
 
 const projetos = [
@@ -72,21 +70,21 @@ const projetos = [
     desc: "Projeto executivo e instalação de sistema VRF de 480 TR com 340 unidades internas, cobrindo 42.000 m² de área climatizada. Controle centralizado com BMS.",
   },
   {
-    area: "Energia Solar",
+    area: "Soluções em Energia",
     titulo: "Usina Fotovoltaica Industrial",
     local: "Anápolis / GO",
     ano: "2024",
     desc: "Implantação de sistema on-grid de 1,2 MWp para indústria química. Redução de 65% na conta de energia. ROI obtido em 4,2 anos.",
   },
   {
-    area: "Treinamentos NR-13",
+    area: "Centro de Treinamento e Reciclagem",
     titulo: "Capacitação em Vasos de Pressão",
     local: "Rio Verde / GO",
     ano: "2023",
     desc: "Treinamento de 48 operadores em caldeiras e vasos de pressão. Elaboração do PIS e regularização documental de 18 equipamentos junto ao SRTE/GO.",
   },
   {
-    area: "Engenharia Modular",
+    area: "Engenharia",
     titulo: "Expansão de Planta Frigorífica",
     local: "Itumbiara / GO",
     ano: "2023",
@@ -100,7 +98,7 @@ const projetos = [
     desc: "Substituição de sistema central por fan-coils de alta eficiência em ambiente crítico (UTI e centros cirúrgicos), com intervenção sem interrupção das operações.",
   },
   {
-    area: "Energia Solar",
+    area: "Soluções em Energia",
     titulo: "Geração Distribuída — Agronegócio",
     local: "Jataí / GO",
     ano: "2022",
@@ -110,9 +108,10 @@ const projetos = [
 
 const areaColors: Record<string, string> = {
   "Climatização": "text-sky-400 border-sky-400/30 bg-sky-400/10",
-  "Energia Solar": "text-yellow-400 border-yellow-400/30 bg-yellow-400/10",
-  "Treinamentos NR-13": "text-orange-400 border-orange-400/30 bg-orange-400/10",
-  "Engenharia Modular": "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
+  "Soluções em Energia": "text-yellow-400 border-yellow-400/30 bg-yellow-400/10",
+  "Centro de Treinamento e Reciclagem": "text-orange-400 border-orange-400/30 bg-orange-400/10",
+  "Engenharia": "text-emerald-400 border-emerald-400/30 bg-emerald-400/10",
+  "Inspeções e Laudos": "text-purple-400 border-purple-400/30 bg-purple-400/10",
 };
 
 export default function PortfolioPage() {
@@ -140,7 +139,7 @@ export default function PortfolioPage() {
               e o que entregamos
             </h1>
             <p className="text-white/70 text-lg lg:text-xl leading-relaxed max-w-2xl">
-              Há mais de uma década atuando no Centro-Oeste, a EDGE Engenharia combina excelência técnica e gestão ágil para entregar soluções completas em climatização, energia solar, treinamentos e engenharia modular.
+              Há mais de uma década atuando no Centro-Oeste, a EDGE Engenharia combina excelência técnica e gestão ágil para entregar soluções completas em climatização, energia solar, treinamentos e engenharia.
             </p>
           </div>
         </div>
@@ -149,7 +148,7 @@ export default function PortfolioPage() {
       {/* Números */}
       <section className="bg-orange-500 py-14">
         <div className="container mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-8">
             {numeros.map((n) => (
               <div key={n.label} className="text-center">
                 <p className="text-5xl font-black text-white leading-none mb-2">{n.valor}</p>
@@ -160,7 +159,7 @@ export default function PortfolioPage() {
         </div>
       </section>
 
-      {/* Áreas de atuação */}
+      {/* Conheça a EDGE — 5 cards com foto */}
       <section className="bg-[#0D1120] py-24">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -168,30 +167,39 @@ export default function PortfolioPage() {
               O que fazemos
             </span>
             <h2 className="text-3xl lg:text-4xl font-black text-white uppercase">
-              Áreas de atuação
+              Conheça a EDGE Engenharia
             </h2>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {areas.map((a) => {
-              const Icon = a.icon;
-              return (
-                <Link
-                  key={a.title}
-                  href={a.href}
-                  className="group border border-white/10 bg-white/3 p-8 hover:border-orange-500/50 transition-colors"
-                >
-                  <div className="w-12 h-12 bg-orange-500/15 flex items-center justify-center mb-6 group-hover:bg-orange-500/25 transition-colors">
-                    <Icon className="w-6 h-6 text-orange-400" />
-                  </div>
-                  <h3 className="text-white font-black text-base uppercase mb-3">{a.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-4">{a.desc}</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {areas.map((a) => (
+              <Link
+                key={a.title}
+                href={a.href}
+                className="group relative overflow-hidden rounded-lg hover:ring-2 hover:ring-orange-500 transition-all"
+              >
+                {/* Foto */}
+                <div className="relative h-48 lg:h-56 overflow-hidden">
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E1A] via-[#0A0E1A]/40 to-transparent" />
+                </div>
+
+                {/* Conteúdo */}
+                <div className="bg-[#0A0E1A] p-5">
+                  <h3 className="text-white font-black text-sm uppercase mb-2 leading-tight">
+                    {a.title}
+                  </h3>
+                  <p className="text-white/50 text-xs leading-relaxed mb-4">{a.desc}</p>
                   <span className="inline-flex items-center gap-1 text-orange-400 text-xs font-bold uppercase tracking-wider group-hover:gap-2 transition-all">
                     Ver mais <ArrowRight className="w-3 h-3" />
                   </span>
-                </Link>
-              );
-            })}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>

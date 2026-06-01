@@ -5,10 +5,10 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Climatização",       href: "#climatizacao" },
-  { label: "Energia Solar",      href: "#energia-solar" },
-  { label: "Treinamentos",       href: "#treinamentos" },
-  { label: "Engenharia Modular", href: "#engenharia-modular" },
+  { label: "Climatização",                        href: "#climatizacao" },
+  { label: "Soluções em Energia",                href: "#energia-solar" },
+  { label: "Centro de Treinamento e Reciclagem", href: "#treinamentos" },
+  { label: "Engenharia",                         href: "#engenharia-modular" },
 ];
 
 export function Navbar() {
