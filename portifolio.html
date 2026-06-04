@@ -225,9 +225,12 @@
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* RESPONSIVE */
+    @media (min-width: 901px) { #nav-cta-desktop { display: inline-flex !important; } }
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
+      #hamburger-btn { display: flex !important; align-items: center; justify-content: center; }
+      #nav-cta-desktop { display: none !important; }
       section { padding: 60px 20px; }
       .hero-grid, .feature-block, .feature-block.reverse { grid-template-columns: 1fr; gap: 40px; direction: ltr; }
       .hero-cards { grid-template-columns: 1fr; }
@@ -250,15 +253,30 @@
     <span class="logo-sub">Engenharia</span>
   </span>
   <ul class="nav-links">
-    <li><a href="/#climatizacao">Climatização</a></li>
-    <li><a href="/#energia-solar">Soluções em Energia</a></li>
-    <li><a href="/#treinamentos">Centro de Treinamento e Reciclagem</a></li>
-    <li><a href="/#engenharia-modular">Engenharia</a></li>
+    <li><a href="#features">Climatização</a></li>
+    <li><a href="#solucoes-energia">Soluções em Energia</a></li>
+    <li><a href="#treinamentos">Centro de Treinamento e Reciclagem</a></li>
+    <li><a href="#planos-individuais">Engenharia</a></li>
   </ul>
   <div class="nav-actions">
-    <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-blue">Falar com a EDGE</a>
+    <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-blue" style="display:none;" id="nav-cta-desktop">Falar com a EDGE</a>
+    <button id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu" style="display:none;background:none;border:none;cursor:pointer;padding:4px;color:var(--white);">
+      <svg id="icon-menu" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg id="icon-close" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div id="mobile-menu" style="display:none;position:fixed;inset:0;z-index:49;background:rgba(2,6,20,0.98);flex-direction:column;padding:90px 32px 40px;">
+  <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;">
+    <li><a href="#features" onclick="closeMobileMenu()" style="display:block;font-size:18px;font-weight:700;color:var(--white);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:0.04em;">Climatização</a></li>
+    <li><a href="#solucoes-energia" onclick="closeMobileMenu()" style="display:block;font-size:18px;font-weight:700;color:var(--white);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:0.04em;">Soluções em Energia</a></li>
+    <li><a href="#treinamentos" onclick="closeMobileMenu()" style="display:block;font-size:18px;font-weight:700;color:var(--white);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:0.04em;">Centro de Treinamento e Reciclagem</a></li>
+    <li><a href="#planos-individuais" onclick="closeMobileMenu()" style="display:block;font-size:18px;font-weight:700;color:var(--white);padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08);text-transform:uppercase;letter-spacing:0.04em;">Engenharia</a></li>
+  </ul>
+  <a href="https://wa.me/5562991605338?text=Ol%C3%A1%2C+vim+do+portf%C3%B3lio+e+quero+saber+mais" target="_blank" class="btn btn-blue" style="margin-top:32px;text-align:center;padding:14px 24px;font-size:15px;" onclick="closeMobileMenu()">Falar com a EDGE</a>
+</div>
 
 
 <!-- STATS TICKER -->
@@ -894,6 +912,22 @@
 </footer>
 
 <script>
+  // Mobile menu
+  function toggleMobileMenu() {
+    var menu = document.getElementById('mobile-menu');
+    var open = menu.style.display === 'flex';
+    menu.style.display = open ? 'none' : 'flex';
+    document.getElementById('icon-menu').style.display = open ? 'block' : 'none';
+    document.getElementById('icon-close').style.display = open ? 'none' : 'block';
+    document.body.style.overflow = open ? '' : 'hidden';
+  }
+  function closeMobileMenu() {
+    document.getElementById('mobile-menu').style.display = 'none';
+    document.getElementById('icon-menu').style.display = 'block';
+    document.getElementById('icon-close').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
   history.pushState(null, '', window.location.href);
   window.addEventListener('popstate', () => {
     history.pushState(null, '', window.location.href);
