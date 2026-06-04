@@ -158,8 +158,8 @@
     /* NETFLIX CARDS */
     .netflix-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
     .netflix-card { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; }
-    .netflix-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
-    .netflix-card:hover img { transform: scale(1.06); }
+    .netflix-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+    .netflix-card:hover img { transform: scale(1.05); }
     .netflix-card-overlay {
       position: absolute; inset: 0;
       background: linear-gradient(to top, rgba(2,6,20,.80) 0%, rgba(2,6,20,.15) 55%, transparent 100%);
@@ -496,7 +496,7 @@
             </ul>
           </div>
         </div>
-        <div class="netflix-card" style="aspect-ratio:16/9;">
+        <div class="netflix-card" style="aspect-ratio:310/480;border-radius:16px;">
           <img src="/img/pages/nossas-usinas2.webp" alt="Energia Solar">
           <div class="netflix-card-overlay">
             <p class="netflix-card-title">Energia Solar</p>
@@ -534,7 +534,7 @@
             </ul>
           </div>
         </div>
-        <div class="netflix-card" style="aspect-ratio:16/9;">
+        <div class="netflix-card" style="aspect-ratio:310/480;border-radius:16px;">
           <img src="/img/pages/nossas-usinas2.webp" alt="Sistemas Híbridos">
           <div class="netflix-card-overlay">
             <p class="netflix-card-title">Sistemas Híbridos</p>
@@ -564,7 +564,7 @@
             </ul>
           </div>
         </div>
-        <div class="netflix-card" style="aspect-ratio:16/9;">
+        <div class="netflix-card" style="aspect-ratio:310/480;border-radius:16px;">
           <img src="/img/pages/nossas-usinas2.webp" alt="BESS">
           <div class="netflix-card-overlay">
             <p class="netflix-card-title">BESS</p>
@@ -596,7 +596,7 @@
             </ul>
           </div>
         </div>
-        <div class="netflix-card" style="aspect-ratio:16/9;">
+        <div class="netflix-card" style="aspect-ratio:310/480;border-radius:16px;">
           <img src="/img/pages/nossas-usinas2.webp" alt="Carregadores Elétricos">
           <div class="netflix-card-overlay">
             <p class="netflix-card-title">Carregadores Elétricos</p>
