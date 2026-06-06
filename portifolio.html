@@ -669,6 +669,12 @@
               <div class="netflix-card-overlay"></div>
             </div>
           </div>
+          <div style="width:100%;flex-shrink:0;">
+            <div class="netflix-card" style="aspect-ratio:310/480;">
+              <img src="/images/net_06.png" alt="Soluções em Energia 4">
+              <div class="netflix-card-overlay"></div>
+            </div>
+          </div>
         </div>
       </div>
       <button onclick="energiaPrev()" aria-label="Anterior" style="position:absolute;left:0;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:var(--blue);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;">
@@ -681,6 +687,7 @@
         <button onclick="energiaGo(0)" id="energia-dot-0" style="width:24px;height:8px;border-radius:99px;border:none;cursor:pointer;background:var(--blue);"></button>
         <button onclick="energiaGo(1)" id="energia-dot-1" style="width:8px;height:8px;border-radius:99px;border:none;cursor:pointer;background:#333;"></button>
         <button onclick="energiaGo(2)" id="energia-dot-2" style="width:8px;height:8px;border-radius:99px;border:none;cursor:pointer;background:#333;"></button>
+        <button onclick="energiaGo(3)" id="energia-dot-3" style="width:8px;height:8px;border-radius:99px;border:none;cursor:pointer;background:#333;"></button>
       </div>
     </div>
   </div>
@@ -1069,7 +1076,7 @@
   function climGo(i) { climIdx = i; climUpdate(); }
 
   // Soluções energéticas carousel
-  var energiaIdx = 0, energiaTotal = 3;
+  var energiaIdx = 0, energiaTotal = 4;
   function energiaUpdate() {
     document.getElementById('energia-track').style.transform = 'translateX(-' + (energiaIdx * 100) + '%)';
     for (var i = 0; i < energiaTotal; i++) {
