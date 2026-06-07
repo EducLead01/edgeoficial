@@ -542,6 +542,7 @@
           <div class="nf-row-card"><div class="netflix-card" style="aspect-ratio:310/480;"><img src="/images/net_01.png" alt="Climatização 1"><div class="netflix-card-overlay"></div></div></div>
           <div class="nf-row-card"><div class="netflix-card" style="aspect-ratio:310/480;"><img src="/images/net_02.png" alt="Climatização 2"><div class="netflix-card-overlay"></div></div></div>
           <div class="nf-row-card"><div class="netflix-card" style="aspect-ratio:310/480;"><img src="/images/net_03.png" alt="Climatização 3"><div class="netflix-card-overlay"></div></div></div>
+          <div class="nf-row-card"><div class="netflix-card" style="aspect-ratio:310/480;"><img src="/images/net_01.png" alt="Climatização 4"><div class="netflix-card-overlay"></div></div></div>
         </div>
       </div>
       <button id="clim-prev" class="nf-row-arrow" onclick="climPrev()" aria-label="Anterior" style="left:0;">
@@ -1209,7 +1210,7 @@
   var treinSvcTimer = setInterval(treinSvcNext, 5000);
 
   // Climatização portrait carousel
-  var climIdx = 0, climTotal = 3;
+  var climIdx = 0, climTotal = 4;
   function climUpdate() {
     var max = Math.max(0, climTotal - nfRowVisible());
     if (climIdx > max) climIdx = max;
