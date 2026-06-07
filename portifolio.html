@@ -117,12 +117,13 @@
     .feature-visual-stat .desc { font-size: 13px; color: var(--gray); text-align: right; }
 
     /* SERVICE CARD ROW */
-    .svc-track-outer { overflow: visible; }
-    .svc-track { display: flex; gap: 16px; }
+    .svc-carousel-wrapper { width: 100%; }
+    .svc-track-outer { overflow: visible; width: 100%; }
+    .svc-track { display: flex; flex-wrap: nowrap; gap: 16px; width: 100%; transform: none !important; }
     .svc-card { flex: 1 1 0 !important; min-width: 0 !important; }
-    .svc-arrow { display: none; }
+    .svc-arrow { display: none !important; }
     @media (max-width: 768px) {
-      .svc-track { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .svc-track { flex-wrap: wrap !important; justify-content: center; gap: 16px; }
       .svc-card { flex: 0 1 calc(50% - 8px) !important; min-width: calc(50% - 8px) !important; }
     }
 
