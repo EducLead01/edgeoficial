@@ -116,19 +116,14 @@
     .feature-visual-stat .num { font-size: 28px; font-weight: 800; color: var(--blue); }
     .feature-visual-stat .desc { font-size: 13px; color: var(--gray); text-align: right; }
 
-    /* SERVICE CARD CAROUSEL */
-    .svc-track-outer { overflow: hidden; }
-    .svc-track { display: flex; gap: 24px; transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
-    .svc-card { flex: 0 0 calc(25% - 18px) !important; min-width: 0 !important; }
-    .svc-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 44px; height: 44px; border-radius: 50%; background: var(--blue); border: none; color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background .2s; }
-    .svc-arrow:hover { background: #3558d4; }
-    .svc-arrow-prev { left: -22px; }
-    .svc-arrow-next { right: -22px; }
-    .svc-arrow:disabled { opacity: 0.3; cursor: default; }
+    /* SERVICE CARD ROW */
+    .svc-track-outer { overflow: visible; }
+    .svc-track { display: flex; gap: 16px; }
+    .svc-card { flex: 1 1 0 !important; min-width: 0 !important; }
+    .svc-arrow { display: none; }
     @media (max-width: 768px) {
-      .svc-track { flex-wrap: wrap; justify-content: center; transform: none !important; }
-      .svc-card { flex: 0 1 calc(50% - 12px) !important; min-width: calc(50% - 12px) !important; }
-      .svc-arrow { display: none; }
+      .svc-track { flex-wrap: wrap; justify-content: center; gap: 16px; }
+      .svc-card { flex: 0 1 calc(50% - 8px) !important; min-width: calc(50% - 8px) !important; }
     }
 
     /* CLIENTS MARQUEE */
