@@ -116,18 +116,7 @@
     .feature-visual-stat .num { font-size: 28px; font-weight: 800; color: var(--blue); }
     .feature-visual-stat .desc { font-size: 13px; color: var(--gray); text-align: right; }
 
-    /* SERVICE CARD ROW */
-    .svc-carousel-wrapper { width: 100%; }
-    .svc-track-outer { overflow: visible; width: 100%; }
-    .svc-track { display: flex; flex-wrap: nowrap; gap: 16px; width: 100%; transform: none !important; }
-    .svc-card { flex: 1 1 0 !important; min-width: 0 !important; }
-    .svc-arrow { display: none !important; }
-    @media (max-width: 768px) {
-      .svc-track { flex-wrap: wrap !important; justify-content: center; gap: 16px; }
-      .svc-card { flex: 0 1 calc(50% - 8px) !important; min-width: calc(50% - 8px) !important; }
-    }
-
-    /* CLIENTS MARQUEE */
+/* CLIENTS MARQUEE */
     #clients { background: #060918; padding: 60px 0; }
     #clients .section-header { padding: 0 40px; margin-bottom: 48px; }
     .marquee-wrap { overflow: hidden; mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask: linear-gradient(to right, transparent, black 10%, black 90%, transparent); }
@@ -402,116 +391,132 @@
       <p style="color:var(--gray);font-size:16px;line-height:1.7;max-width:640px;margin:16px auto 0;">Do dimensionamento à instalação, oferecemos soluções em ar-condicionado e climatização industrial para garantir conforto térmico, eficiência energética e produtividade no seu espaço.</p>
     </div>
 
-    <!-- Desktop: carrossel horizontal | Mobile: grid 2 colunas -->
-    <div class="svc-carousel-wrapper fade-in" style="position:relative;margin-top:48px;">
-      <!-- Setas (só desktop) -->
-      <button class="svc-arrow svc-arrow-prev" id="clim-svc-prev" onclick="climSvcPrev()" aria-label="Anterior">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="svc-track-outer" id="clim-svc-outer">
-        <div class="svc-track" id="clim-svc-track">
+    <div class="fade-in" style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:48px;">
 
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="8" width="34" height="11" rx="2"/>
-                  <line x1="3" y1="15" x2="37" y2="15"/>
-                  <circle cx="32" cy="11.5" r="1.2" fill="white" stroke="none"/>
-                  <path d="M8 23 Q9.5 27 8 31"/>
-                  <path d="M14 23 Q15.5 27 14 31"/>
-                  <path d="M20 23 Q21.5 27 20 31"/>
-                  <path d="M26 23 Q27.5 27 26 31"/>
-                  <path d="M32 23 Q33.5 27 32 31"/>
-                </svg>
-              </div>
-              <h3>Ar-condicionado</h3>
-              <p>Split, inverter, VRF e centrais de água gelada para pequenos e grandes espaços.</p>
-            </div>
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="8" width="34" height="11" rx="2"/>
+              <line x1="3" y1="15" x2="37" y2="15"/>
+              <circle cx="32" cy="11.5" r="1.2" fill="white" stroke="none"/>
+              <path d="M8 23 Q9.5 27 8 31"/>
+              <path d="M14 23 Q15.5 27 14 31"/>
+              <path d="M20 23 Q21.5 27 20 31"/>
+              <path d="M26 23 Q27.5 27 26 31"/>
+              <path d="M32 23 Q33.5 27 32 31"/>
+            </svg>
           </div>
-
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="36" height="36" rx="4"/>
-                  <circle cx="20" cy="20" r="11"/>
-                  <circle cx="20" cy="20" r="2.5"/>
-                  <path d="M20 17.5 Q16 11 10 13"/>
-                  <path d="M22.5 20 Q29 16 27 10"/>
-                  <path d="M20 22.5 Q24 29 30 27"/>
-                  <path d="M17.5 20 Q11 24 13 30"/>
-                </svg>
-              </div>
-              <h3>Climatizadores industriais</h3>
-              <p>Unidades de alto desempenho para galpões, fábricas e armazéns com grande volume de ar.</p>
-            </div>
-          </div>
-
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M29 4 C33 8 33 15 29 17 L10 36 C8 38 5 38 3 36 C1 34 2 31 4 29 L23 10 C19 6 22 1 26 3 L22 7 L24 9 L28 5 Z"/>
-                </svg>
-              </div>
-              <h3>Instalação e manutenção</h3>
-              <p>Equipe técnica especializada para instalação, preventiva e corretiva em qualquer equipamento.</p>
-            </div>
-          </div>
-
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 4 L26 4 L34 12 L34 34 Q34 36 32 36 L8 36 Q6 36 6 34 L6 6 Q6 4 8 4Z"/>
-                  <path d="M26 4 L26 12 L34 12"/>
-                  <line x1="12" y1="19" x2="28" y2="19"/>
-                  <line x1="12" y1="24" x2="28" y2="24"/>
-                  <line x1="12" y1="29" x2="20" y2="29"/>
-                </svg>
-              </div>
-              <h3>Projetos e dimensionamento</h3>
-              <p>Consultoria técnica para o sistema ideal conforme carga térmica e necessidades do projeto.</p>
-            </div>
-          </div>
-
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M8 4 L28 4 Q30 4 30 6 L30 10 L34 10 L34 36 Q34 38 32 38 L8 38 Q6 38 6 36 L6 6 Q6 4 8 4Z"/>
-                  <path d="M30 6 L34 10"/>
-                  <polyline points="11,17 13,20 18,14"/>
-                  <line x1="22" y1="17" x2="29" y2="17"/>
-                  <polyline points="11,25 13,28 18,22"/>
-                  <line x1="22" y1="25" x2="29" y2="25"/>
-                  <line x1="11" y1="33" x2="24" y2="33"/>
-                </svg>
-              </div>
-              <h3>PMOC</h3>
-              <p>Plano de Manutenção, Operação e Controle obrigatório por lei para sistemas acima de 5 TR em ambientes de uso coletivo — hospitais, shoppings, escritórios, hotéis e indústrias.</p>
-            </div>
-          </div>
-
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4 L4 21 L21 38 Q23 40 25 38 L38 25 Q40 23 38 21 L21 4 Z"/>
-                  <circle cx="13" cy="13" r="3"/>
-                </svg>
-              </div>
-              <h3>Vendas</h3>
-              <p>Ar-condicionados e climatizadores das principais marcas do mercado para residências, comércios e indústrias.</p>
-            </div>
-          </div>
-
+          <h3>Ar-condicionado</h3>
+          <ul>
+            <li>Split e inverter</li>
+            <li>VRF</li>
+            <li>Centrais de água gelada</li>
+            <li>Residencial e industrial</li>
+          </ul>
         </div>
       </div>
-      <button class="svc-arrow svc-arrow-next" id="clim-svc-next" onclick="climSvcNext()" aria-label="Próximo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="36" height="36" rx="4"/>
+              <circle cx="20" cy="20" r="11"/>
+              <circle cx="20" cy="20" r="2.5"/>
+              <path d="M20 17.5 Q16 11 10 13"/>
+              <path d="M22.5 20 Q29 16 27 10"/>
+              <path d="M20 22.5 Q24 29 30 27"/>
+              <path d="M17.5 20 Q11 24 13 30"/>
+            </svg>
+          </div>
+          <h3>Climatizadores industriais</h3>
+          <ul>
+            <li>Galpões e fábricas</li>
+            <li>Armazéns</li>
+            <li>Alto volume de ar</li>
+            <li>Performance industrial</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M29 4 C33 8 33 15 29 17 L10 36 C8 38 5 38 3 36 C1 34 2 31 4 29 L23 10 C19 6 22 1 26 3 L22 7 L24 9 L28 5 Z"/>
+            </svg>
+          </div>
+          <h3>Instalação e manutenção</h3>
+          <ul>
+            <li>Instalação técnica</li>
+            <li>Manutenção preventiva</li>
+            <li>Manutenção corretiva</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 4 L26 4 L34 12 L34 34 Q34 36 32 36 L8 36 Q6 36 6 34 L6 6 Q6 4 8 4Z"/>
+              <path d="M26 4 L26 12 L34 12"/>
+              <line x1="12" y1="19" x2="28" y2="19"/>
+              <line x1="12" y1="24" x2="28" y2="24"/>
+              <line x1="12" y1="29" x2="20" y2="29"/>
+            </svg>
+          </div>
+          <h3>Projetos e dimensionamento</h3>
+          <ul>
+            <li>Cálculo de carga térmica</li>
+            <li>Projeto executivo</li>
+            <li>Dimensionamento técnico</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 4 L28 4 Q30 4 30 6 L30 10 L34 10 L34 36 Q34 38 32 38 L8 38 Q6 38 6 36 L6 6 Q6 4 8 4Z"/>
+              <path d="M30 6 L34 10"/>
+              <polyline points="11,17 13,20 18,14"/>
+              <line x1="22" y1="17" x2="29" y2="17"/>
+              <polyline points="11,25 13,28 18,22"/>
+              <line x1="22" y1="25" x2="29" y2="25"/>
+              <line x1="11" y1="33" x2="24" y2="33"/>
+            </svg>
+          </div>
+          <h3>PMOC</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Plano de Manutenção, Operação e Controle</p>
+          <ul>
+            <li>Obrigatório por lei (acima de 5 TR)</li>
+            <li>Hospitais e shoppings</li>
+            <li>Escritórios e hotéis</li>
+            <li>Indústrias</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4 L4 21 L21 38 Q23 40 25 38 L38 25 Q40 23 38 21 L21 4 Z"/>
+              <circle cx="13" cy="13" r="3"/>
+            </svg>
+          </div>
+          <h3>Vendas</h3>
+          <ul>
+            <li>Principais marcas</li>
+            <li>Residencial e comercial</li>
+            <li>Industrial</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -674,161 +679,145 @@
       <p style="color:var(--gray);font-size:16px;line-height:1.7;max-width:640px;margin:16px auto 0;">Capacitação técnica presencial com equipamentos reais, emissão de certificados e elaboração de toda a documentação exigida pelas normas regulamentadoras.</p>
     </div>
 
-    <div class="svc-carousel-wrapper fade-in" style="position:relative;margin-top:48px;">
-      <button class="svc-arrow svc-arrow-prev" id="trein-svc-prev" onclick="treinSvcPrev()" aria-label="Anterior">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-      </button>
-      <div class="svc-track-outer">
-        <div class="svc-track" id="trein-svc-track">
+    <div class="fade-in" style="display:flex;flex-wrap:wrap;justify-content:center;gap:24px;margin-top:48px;">
 
-          <!-- NR-13 -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="20" cy="22" rx="12" ry="10"/>
-                  <path d="M14 12 Q20 6 26 12"/>
-                  <line x1="20" y1="6" x2="20" y2="12"/>
-                  <line x1="8" y1="22" x2="4" y2="22"/>
-                  <line x1="32" y1="22" x2="36" y2="22"/>
-                  <circle cx="20" cy="22" r="3"/>
-                  <line x1="20" y1="19" x2="20" y2="16"/>
-                </svg>
-              </div>
-              <h3>NR-13</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Caldeiras, Vasos de Pressão e Tubulações</p>
-              <ul>
-                <li>Operador de caldeira</li>
-                <li>Inspeção periódica</li>
-                <li>Prontuário e PIS</li>
-                <li>Reciclagem obrigatória</li>
-              </ul>
-            </div>
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="20" cy="22" rx="12" ry="10"/>
+              <path d="M14 12 Q20 6 26 12"/>
+              <line x1="20" y1="6" x2="20" y2="12"/>
+              <line x1="8" y1="22" x2="4" y2="22"/>
+              <line x1="32" y1="22" x2="36" y2="22"/>
+              <circle cx="20" cy="22" r="3"/>
+              <line x1="20" y1="19" x2="20" y2="16"/>
+            </svg>
           </div>
-
-          <!-- NR-10 -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="22,4 16,20 22,20 18,36"/>
-                  <line x1="10" y1="10" x2="6" y2="7"/>
-                  <line x1="10" y1="20" x2="5" y2="20"/>
-                  <line x1="10" y1="30" x2="6" y2="33"/>
-                  <line x1="30" y1="10" x2="34" y2="7"/>
-                  <line x1="30" y1="20" x2="35" y2="20"/>
-                  <line x1="30" y1="30" x2="34" y2="33"/>
-                </svg>
-              </div>
-              <h3>NR-10</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Segurança em Instalações Elétricas</p>
-              <ul>
-                <li>Básico e complementar (SEP)</li>
-                <li>Alta e baixa tensão</li>
-                <li>Reciclagem bienal</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- NR-12 -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="20" r="10"/>
-                  <circle cx="20" cy="20" r="4"/>
-                  <line x1="20" y1="6" x2="20" y2="16"/>
-                  <line x1="20" y1="24" x2="20" y2="34"/>
-                  <line x1="6" y1="20" x2="16" y2="20"/>
-                  <line x1="24" y1="20" x2="34" y2="20"/>
-                  <line x1="10.1" y1="10.1" x2="16.5" y2="16.5"/>
-                  <line x1="23.5" y1="23.5" x2="29.9" y2="29.9"/>
-                </svg>
-              </div>
-              <h3>NR-12</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Segurança em Máquinas e Equipamentos</p>
-              <ul>
-                <li>Operação segura de máquinas</li>
-                <li>Proteções e dispositivos</li>
-                <li>Reciclagem periódica</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- NR-33 -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <ellipse cx="20" cy="28" rx="14" ry="8"/>
-                  <line x1="20" y1="20" x2="20" y2="10"/>
-                  <circle cx="20" cy="8" r="3"/>
-                  <line x1="6" y1="28" x2="6" y2="36"/>
-                  <line x1="34" y1="28" x2="34" y2="36"/>
-                  <path d="M14 28 Q16 24 20 24 Q24 24 26 28"/>
-                </svg>
-              </div>
-              <h3>NR-33</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Espaços Confinados</p>
-              <ul>
-                <li>Vigia, supervisor e autorizado</li>
-                <li>Plano de resgate</li>
-                <li>Reciclagem anual</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- NR-35 -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="8" y1="36" x2="32" y2="36"/>
-                  <line x1="14" y1="36" x2="14" y2="14"/>
-                  <line x1="26" y1="36" x2="26" y2="14"/>
-                  <line x1="14" y1="28" x2="26" y2="28"/>
-                  <line x1="14" y1="21" x2="26" y2="21"/>
-                  <line x1="14" y1="14" x2="26" y2="14"/>
-                  <circle cx="20" cy="8" r="3"/>
-                </svg>
-              </div>
-              <h3>NR-35</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Trabalho em Altura</p>
-              <ul>
-                <li>Básico e avançado</li>
-                <li>Uso de EPI e EPC</li>
-                <li>Reciclagem bienal</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Treinamento Personalizado -->
-          <div class="plan-card svc-card">
-            <div class="plan-card-body">
-              <div style="margin-bottom:16px;">
-                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="20" cy="12" r="5"/>
-                  <path d="M10 32 Q10 24 20 24 Q30 24 30 32"/>
-                  <line x1="28" y1="8" x2="36" y2="8"/>
-                  <line x1="28" y1="14" x2="36" y2="14"/>
-                  <line x1="28" y1="20" x2="34" y2="20"/>
-                </svg>
-              </div>
-              <h3>Treinamento Personalizado</h3>
-              <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Sob medida para a sua empresa</p>
-              <ul>
-                <li>Conteúdo adaptado à sua operação</li>
-                <li>Turmas in-company ou no CTR</li>
-                <li>Certificação e documentação incluídas</li>
-              </ul>
-            </div>
-          </div>
-
+          <h3>NR-13</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Caldeiras, Vasos de Pressão e Tubulações</p>
+          <ul>
+            <li>Operador de caldeira</li>
+            <li>Inspeção periódica</li>
+            <li>Prontuário e PIS</li>
+            <li>Reciclagem obrigatória</li>
+          </ul>
         </div>
       </div>
-      <button class="svc-arrow svc-arrow-next" id="trein-svc-next" onclick="treinSvcNext()" aria-label="Próximo">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-      </button>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22,4 16,20 22,20 18,36"/>
+              <line x1="10" y1="10" x2="6" y2="7"/>
+              <line x1="10" y1="20" x2="5" y2="20"/>
+              <line x1="10" y1="30" x2="6" y2="33"/>
+              <line x1="30" y1="10" x2="34" y2="7"/>
+              <line x1="30" y1="20" x2="35" y2="20"/>
+              <line x1="30" y1="30" x2="34" y2="33"/>
+            </svg>
+          </div>
+          <h3>NR-10</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Segurança em Instalações Elétricas</p>
+          <ul>
+            <li>Básico e complementar (SEP)</li>
+            <li>Alta e baixa tensão</li>
+            <li>Reciclagem bienal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="20" cy="20" r="10"/>
+              <circle cx="20" cy="20" r="4"/>
+              <line x1="20" y1="6" x2="20" y2="16"/>
+              <line x1="20" y1="24" x2="20" y2="34"/>
+              <line x1="6" y1="20" x2="16" y2="20"/>
+              <line x1="24" y1="20" x2="34" y2="20"/>
+              <line x1="10.1" y1="10.1" x2="16.5" y2="16.5"/>
+              <line x1="23.5" y1="23.5" x2="29.9" y2="29.9"/>
+            </svg>
+          </div>
+          <h3>NR-12</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Segurança em Máquinas e Equipamentos</p>
+          <ul>
+            <li>Operação segura de máquinas</li>
+            <li>Proteções e dispositivos</li>
+            <li>Reciclagem periódica</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="20" cy="28" rx="14" ry="8"/>
+              <line x1="20" y1="20" x2="20" y2="10"/>
+              <circle cx="20" cy="8" r="3"/>
+              <line x1="6" y1="28" x2="6" y2="36"/>
+              <line x1="34" y1="28" x2="34" y2="36"/>
+              <path d="M14 28 Q16 24 20 24 Q24 24 26 28"/>
+            </svg>
+          </div>
+          <h3>NR-33</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Espaços Confinados</p>
+          <ul>
+            <li>Vigia, supervisor e autorizado</li>
+            <li>Plano de resgate</li>
+            <li>Reciclagem anual</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="8" y1="36" x2="32" y2="36"/>
+              <line x1="14" y1="36" x2="14" y2="14"/>
+              <line x1="26" y1="36" x2="26" y2="14"/>
+              <line x1="14" y1="28" x2="26" y2="28"/>
+              <line x1="14" y1="21" x2="26" y2="21"/>
+              <line x1="14" y1="14" x2="26" y2="14"/>
+              <circle cx="20" cy="8" r="3"/>
+            </svg>
+          </div>
+          <h3>NR-35</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Trabalho em Altura</p>
+          <ul>
+            <li>Básico e avançado</li>
+            <li>Uso de EPI e EPC</li>
+            <li>Reciclagem bienal</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-card-body">
+          <div style="margin-bottom:16px;">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="20" cy="12" r="5"/>
+              <path d="M10 32 Q10 24 20 24 Q30 24 30 32"/>
+              <line x1="28" y1="8" x2="36" y2="8"/>
+              <line x1="28" y1="14" x2="36" y2="14"/>
+              <line x1="28" y1="20" x2="34" y2="20"/>
+            </svg>
+          </div>
+          <h3>Treinamento Personalizado</h3>
+          <p style="font-size:11px;color:var(--gray);margin-bottom:8px;">Sob medida para a sua empresa</p>
+          <ul>
+            <li>Conteúdo adaptado à sua operação</li>
+            <li>Turmas in-company ou no CTR</li>
+            <li>Certificação e documentação incluídas</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
 
     <div style="text-align:center;margin-top:40px;">
@@ -1185,40 +1174,6 @@
   function climNext() { var max = Math.max(0, climTotal - nfRowVisible()); if (climIdx < max) { climIdx++; climUpdate(); } }
   function climPrev() { if (climIdx > 0) { climIdx--; climUpdate(); } }
 
-  // Climatização service carousel
-  var climSvcIdx = 0;
-  var climSvcMax = 2;
-  function climSvcGetStep() {
-    var track = document.getElementById('clim-svc-track');
-    if (!track || !track.children[0]) return 0;
-    return track.children[0].offsetWidth + 24;
-  }
-  function climSvcUpdate() {
-    if (window.innerWidth <= 768) return;
-    document.getElementById('clim-svc-track').style.transform = 'translateX(-' + (climSvcIdx * climSvcGetStep()) + 'px)';
-    document.getElementById('clim-svc-prev').disabled = climSvcIdx === 0;
-    document.getElementById('clim-svc-next').disabled = climSvcIdx >= climSvcMax;
-  }
-  function climSvcNext() { if (climSvcIdx < climSvcMax) { climSvcIdx++; climSvcUpdate(); } }
-  function climSvcPrev() { if (climSvcIdx > 0) { climSvcIdx--; climSvcUpdate(); } }
-
-  // Treinamentos service carousel
-  var treinSvcIdx = 0;
-  var treinSvcMax = 2;
-  function treinSvcGetStep() {
-    var track = document.getElementById('trein-svc-track');
-    if (!track || !track.children[0]) return 0;
-    return track.children[0].offsetWidth + 24;
-  }
-  function treinSvcUpdate() {
-    if (window.innerWidth <= 768) return;
-    document.getElementById('trein-svc-track').style.transform = 'translateX(-' + (treinSvcIdx * treinSvcGetStep()) + 'px)';
-    document.getElementById('trein-svc-prev').disabled = treinSvcIdx === 0;
-    document.getElementById('trein-svc-next').disabled = treinSvcIdx >= treinSvcMax;
-  }
-  function treinSvcNext() { if (treinSvcIdx < treinSvcMax) { treinSvcIdx++; treinSvcUpdate(); } }
-  function treinSvcPrev() { if (treinSvcIdx > 0) { treinSvcIdx--; treinSvcUpdate(); } }
-
   // Soluções energéticas portrait carousel
   var energiaIdx = 0, energiaTotal = 5;
   function energiaUpdate() {
@@ -1244,12 +1199,8 @@
   function treinPrev() { if (treinIdx > 0) { treinIdx--; treinUpdate(); } }
 
   window.addEventListener('resize', function() {
-    climSvcIdx = 0; climSvcUpdate();
-    treinSvcIdx = 0; treinSvcUpdate();
     climUpdate(); energiaUpdate(); treinUpdate();
   });
-  climSvcUpdate();
-  treinSvcUpdate();
   climUpdate();
   energiaUpdate();
   treinUpdate();
