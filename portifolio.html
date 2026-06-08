@@ -1265,58 +1265,85 @@
 
   // Climatização portrait carousel
   var climIdx = 0, climTotal = 4;
+  function climMax() { return Math.max(0, climTotal - nfRowVisible()); }
   function climUpdate() {
-    var max = Math.max(0, climTotal - nfRowVisible());
-    if (climIdx > max) climIdx = max;
     document.getElementById('clim-track').style.transform = 'translateX(-' + (climIdx * nfRowStep('clim-track')) + 'px)';
-    document.getElementById('clim-prev').disabled = climIdx === 0;
-    document.getElementById('clim-next').disabled = climIdx >= max;
   }
-  function climNext() { var max = Math.max(0, climTotal - nfRowVisible()); if (climIdx < max) { climIdx++; climUpdate(); } }
-  function climPrev() { if (climIdx > 0) { climIdx--; climUpdate(); } }
+  function climNext() {
+    climIdx = climIdx >= climMax() ? 0 : climIdx + 1;
+    climUpdate();
+    clearInterval(climTimer); climTimer = setInterval(climNext, 4000);
+  }
+  function climPrev() {
+    climIdx = climIdx <= 0 ? climMax() : climIdx - 1;
+    climUpdate();
+    clearInterval(climTimer); climTimer = setInterval(climNext, 4000);
+  }
+  var climTimer = setInterval(climNext, 4000);
 
   // Soluções energéticas portrait carousel
   var energiaIdx = 0, energiaTotal = 5;
+  function energiaMax() { return Math.max(0, energiaTotal - nfRowVisible()); }
   function energiaUpdate() {
-    var max = Math.max(0, energiaTotal - nfRowVisible());
-    if (energiaIdx > max) energiaIdx = max;
     document.getElementById('energia-track').style.transform = 'translateX(-' + (energiaIdx * nfRowStep('energia-track')) + 'px)';
-    document.getElementById('energia-prev').disabled = energiaIdx === 0;
-    document.getElementById('energia-next').disabled = energiaIdx >= max;
   }
-  function energiaNext() { var max = Math.max(0, energiaTotal - nfRowVisible()); if (energiaIdx < max) { energiaIdx++; energiaUpdate(); } }
-  function energiaPrev() { if (energiaIdx > 0) { energiaIdx--; energiaUpdate(); } }
+  function energiaNext() {
+    energiaIdx = energiaIdx >= energiaMax() ? 0 : energiaIdx + 1;
+    energiaUpdate();
+    clearInterval(energiaTimer); energiaTimer = setInterval(energiaNext, 4000);
+  }
+  function energiaPrev() {
+    energiaIdx = energiaIdx <= 0 ? energiaMax() : energiaIdx - 1;
+    energiaUpdate();
+    clearInterval(energiaTimer); energiaTimer = setInterval(energiaNext, 4000);
+  }
+  var energiaTimer = setInterval(energiaNext, 4000);
 
   // Treinamentos portrait carousel
   var treinIdx = 0, treinTotal = 4;
+  function treinMax() { return Math.max(0, treinTotal - nfRowVisible()); }
   function treinUpdate() {
-    var max = Math.max(0, treinTotal - nfRowVisible());
-    if (treinIdx > max) treinIdx = max;
     document.getElementById('trein-track').style.transform = 'translateX(-' + (treinIdx * nfRowStep('trein-track')) + 'px)';
-    document.getElementById('trein-prev').disabled = treinIdx === 0;
-    document.getElementById('trein-next').disabled = treinIdx >= max;
   }
-  function treinNext() { var max = Math.max(0, treinTotal - nfRowVisible()); if (treinIdx < max) { treinIdx++; treinUpdate(); } }
-  function treinPrev() { if (treinIdx > 0) { treinIdx--; treinUpdate(); } }
+  function treinNext() {
+    treinIdx = treinIdx >= treinMax() ? 0 : treinIdx + 1;
+    treinUpdate();
+    clearInterval(treinTimer); treinTimer = setInterval(treinNext, 4000);
+  }
+  function treinPrev() {
+    treinIdx = treinIdx <= 0 ? treinMax() : treinIdx - 1;
+    treinUpdate();
+    clearInterval(treinTimer); treinTimer = setInterval(treinNext, 4000);
+  }
+  var treinTimer = setInterval(treinNext, 4000);
 
   // Engenharia portrait carousel
   var engIdx = 0, engTotal = 4;
+  function engMax() { return Math.max(0, engTotal - nfRowVisible()); }
   function engUpdate() {
-    var max = Math.max(0, engTotal - nfRowVisible());
-    if (engIdx > max) engIdx = max;
     document.getElementById('eng-track').style.transform = 'translateX(-' + (engIdx * nfRowStep('eng-track')) + 'px)';
-    document.getElementById('eng-prev').disabled = engIdx === 0;
-    document.getElementById('eng-next').disabled = engIdx >= max;
   }
-  function engNext() { var max = Math.max(0, engTotal - nfRowVisible()); if (engIdx < max) { engIdx++; engUpdate(); } }
-  function engPrev() { if (engIdx > 0) { engIdx--; engUpdate(); } }
+  function engNext() {
+    engIdx = engIdx >= engMax() ? 0 : engIdx + 1;
+    engUpdate();
+    clearInterval(engTimer); engTimer = setInterval(engNext, 4000);
+  }
+  function engPrev() {
+    engIdx = engIdx <= 0 ? engMax() : engIdx - 1;
+    engUpdate();
+    clearInterval(engTimer); engTimer = setInterval(engNext, 4000);
+  }
+  var engTimer = setInterval(engNext, 4000);
 
   window.addEventListener('resize', function() {
     climSvcIdx = 0; climSvcUpdate();
     treinSvcIdx = 0; treinSvcUpdate();
     energiaSvcIdx = 0; energiaSvcUpdate();
     engSvcIdx = 0; engSvcUpdate();
-    climUpdate(); energiaUpdate(); treinUpdate(); engUpdate();
+    climIdx = 0; climUpdate();
+    energiaIdx = 0; energiaUpdate();
+    treinIdx = 0; treinUpdate();
+    engIdx = 0; engUpdate();
   });
   climUpdate();
   energiaUpdate();
